@@ -1,0 +1,9 @@
+._box_1lcvn_1 {
+  height: 100%;
+  overflow-y: auto;
+  width: 100%;
+}
+._box_1lcvn_1 div {
+  width: 100%;
+  height: 100vh;
+}

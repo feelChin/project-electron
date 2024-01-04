@@ -1,0 +1,131 @@
+@mixin status {
+  position: relative;
+  cursor: pointer;
+  border-radius: var(--borde-radius);
+  background: var(--color);
+  overflow: hidden;
+  transition: 0.4s;
+  &:global(.none) {
+    background: var(--none-color);
+    pointer-events: none;
+  }
+  &:global(.default) {
+    background: var(--default-color);
+    border: 1px solid var(--color);
+    span {
+      color: var(--color);
+      transition: color 0.4s;
+    }
+    &:hover {
+      border-color: transparent;
+      span {
+        color: white;
+      }
+    }
+    &:active {
+      border-color: transparent;
+      span {
+        color: white;
+      }
+    }
+  }
+  span {
+    @include absolute;
+    @include flex;
+    color: white;
+    z-index: 3;
+  }
+  &:before,
+  &:after {
+    content: "";
+    @include absolute;
+    opacity: 0;
+    transition: 0.4s;
+  }
+  &:before {
+    background: var(--color2);
+    z-index: 1;
+  }
+  &:after {
+    background: var(--color3);
+    z-index: 2;
+  }
+  &:hover {
+    &:before {
+      opacity: 1;
+    }
+  }
+  &:active {
+    &:after {
+      opacity: 1;
+    }
+  }
+}
+
+@mixin ell($num) {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: $num;
+  -webkit-box-orient: vertical;
+}
+
+@function random_range($min, $max) {
+  $rand: random();
+  $random_range: $min + floor($rand * (($max - $min) + 1));
+  @return $random_range;
+}
+
+@mixin fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+@mixin absolute {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@mixin transformMargin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin transformMarginLeft {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@mixin transformMarginTop {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@mixin flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flexBetween {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flexBetweenWrap {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}

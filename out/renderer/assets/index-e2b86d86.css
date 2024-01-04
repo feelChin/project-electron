@@ -1,0 +1,31 @@
+._accordion_132zy_1 {
+  display: flex;
+}
+._accordion_132zy_1 ._item_132zy_4 {
+  width: 200px;
+  margin: 0 20px;
+}
+._accordion_132zy_1 ._item_132zy_4 ._accordionHead_132zy_8 {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--black);
+  color: var(--white);
+}
+._accordion_132zy_1 ._item_132zy_4 ._accordionHead_132zy_8.active {
+  background: var(--black);
+  color: var(--white);
+}
+._accordion_132zy_1 ._item_132zy_4 ._accordionContent_132zy_21 {
+  overflow: hidden;
+  height: 0;
+  transition: height 0.4s;
+  margin-top: 10px;
+  background: var(--black);
+  color: var(--white);
+}
+._accordion_132zy_1 ._item_132zy_4 ._accordionContent_132zy_21 div {
+  padding: 5px;
+}

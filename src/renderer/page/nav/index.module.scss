@@ -1,0 +1,210 @@
+@import "@style/_util.scss";
+
+.nav {
+  position: relative;
+  height: 52px;
+  padding: 0 20px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  -webkit-app-region: drag;
+  z-index: 9;
+  background: var(--white);
+  nav {
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    left: 180px;
+    height: 100%;
+    z-index: 3;
+    -webkit-app-region: no-drag;
+    cursor: pointer;
+    .item {
+      font-size: 15px;
+      padding: 0 25px;
+      position: relative;
+      color: var(--black);
+      cursor: pointer;
+      height: 100%;
+      @include flex;
+      transition: color 0.4s;
+      &.active {
+        color: white;
+        &:after {
+          height: 100%;
+        }
+      }
+      &:after {
+        content: "";
+        @include absolute;
+        height: 0;
+        z-index: -1;
+        transition: 0.4s;
+        background: linear-gradient(to top, var(--mainColor), white);
+      }
+    }
+  }
+  .theme {
+    -webkit-app-region: no-drag;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 120px;
+    width: 40px;
+    height: 20px;
+    border: 1px solid var(--mainColor);
+    border-radius: 20px;
+    &.active {
+      .dot {
+        left: calc(100% - 16px);
+        background: white;
+      }
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: 2px;
+      height: 14px;
+      left: 2px;
+      right: 2px;
+      border-radius: 14px;
+      border: 1px solid var(--mainColor);
+      background: var(--mainColor);
+      opacity: 0.6;
+    }
+    .dot {
+      position: absolute;
+      bottom: 2px;
+      width: 14px;
+      height: 14px;
+      left: 2px;
+      border-radius: 50%;
+      background: var(--black);
+      z-index: 2;
+      transition: 0.4s;
+    }
+  }
+  .menuWrapper {
+    position: absolute;
+    right: 20px;
+    top: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    .menu {
+      position: relative;
+      width: 20px;
+      height: 20px;
+      margin-left: 20px;
+      -webkit-app-region: no-drag;
+      cursor: pointer;
+    }
+    .minimize {
+      position: relative;
+      display: flex;
+      align-items: center;
+      .minimizeLine {
+        position: relative;
+        width: 18px;
+        height: 1px;
+        background: var(--black);
+        &:after {
+          content: "";
+          position: absolute;
+          width: 0;
+          height: 100%;
+          right: 0;
+          background: var(--mainColor);
+          transition: 0.4s;
+        }
+      }
+      &:hover {
+        .minimizeLine {
+          &:after {
+            left: 0;
+            width: 100%;
+          }
+        }
+      }
+    }
+    .maximize {
+      width: 16px;
+      height: 16px;
+      margin: 0 20px;
+      .topMaximizeLine {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 1px;
+        background: var(--black);
+      }
+      .rightMaximizeLine {
+        position: absolute;
+        right: 0;
+        width: 1px;
+        height: 100%;
+        background: var(--black);
+      }
+      .bottomMaximizeLine {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 1px;
+        background: var(--black);
+      }
+      .leftMaximizeLine {
+        position: absolute;
+        left: 0;
+        width: 1px;
+        height: 100%;
+        background: var(--black);
+      }
+
+      &:hover {
+        .beforeMaximizeLine,
+        .afterMaximizeLine {
+          &:after {
+            left: 0;
+            width: 100%;
+          }
+        }
+      }
+    }
+    .close {
+      .beforeCloseLine,
+      .afterCloseLine {
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        background: var(--black);
+        top: 50%;
+        &:after {
+          content: "";
+          position: absolute;
+          width: 0%;
+          height: 100%;
+          right: 0;
+          background: var(--mainColor);
+          transition: 0.4s;
+        }
+      }
+      .beforeCloseLine {
+        transform: translateY(-50%) rotate(45deg);
+      }
+      .afterCloseLine {
+        transform: translateY(-50%) rotate(-45deg);
+      }
+      &:hover {
+        .beforeCloseLine,
+        .afterCloseLine {
+          &:after {
+            left: 0;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}

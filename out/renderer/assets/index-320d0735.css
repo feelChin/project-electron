@@ -1,0 +1,12 @@
+._timeCountDown_1522f_1 {
+  color: var(--black);
+  background: var(--white);
+}
+._timeCountDown_1522f_1 p {
+  text-align: center;
+  margin-bottom: 5vw;
+}
+._timeCountDown_1522f_1 .timeCountDown {
+  font-size: 16px;
+  text-align: center;
+}

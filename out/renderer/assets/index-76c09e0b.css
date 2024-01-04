@@ -1,0 +1,35 @@
+._box_15gxb_1 {
+  color: var(--black);
+}
+@keyframes _textAni_15gxb_1 {
+  0% {
+    opacity: 0;
+    transform: translateX(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+._box_15gxb_1 ._element_15gxb_14 {
+  font-size: 30px;
+  margin: 30px 0;
+  line-height: 2;
+  white-space: pre-wrap;
+}
+._box_15gxb_1 ._element_15gxb_14 span {
+  font-family: inherit;
+  width: auto;
+  font-size: inherit;
+  color: inherit;
+  font-weight: inherit;
+  text-transform: inherit;
+  opacity: 0;
+  display: inline-block;
+}
+._box_15gxb_1 ._element_15gxb_14.active span {
+  animation: _textAni_15gxb_1 1s forwards;
+}
+._box_15gxb_1 ._element_15gxb_14 .letters {
+  color: var(--mainColor);
+}

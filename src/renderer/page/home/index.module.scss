@@ -1,0 +1,31 @@
+@import "@style/_util.scss";
+
+.img {
+  width: 100%;
+  height: 100%;
+  background: url("../../img/0.jpg") center center;
+  background-size: cover;
+}
+
+.search {
+  position: absolute;
+  width: 50%;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  input {
+    width: 100%;
+    height: 50px;
+    border: 1px solid white;
+    background: transparent;
+    border-radius: 50px;
+    padding: 0 50px;
+    text-align: center;
+    color: white;
+    font-size: 16px;
+    font-weight: 100;
+    &::placeholder {
+      color: white;
+    }
+  }
+}

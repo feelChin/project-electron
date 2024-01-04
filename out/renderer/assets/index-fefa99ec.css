@@ -1,0 +1,36 @@
+._box_zas65_1 {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+._box_zas65_1 ._item_zas65_6 {
+  width: 40vw;
+  margin: 0 auto;
+  background: var(--white6);
+}
+._box_zas65_1 ._place_zas65_11 {
+  height: 30vw;
+}
+._box_zas65_1 ._img_zas65_14 {
+  position: relative;
+}
+._box_zas65_1 img {
+  width: 100%;
+}
+._box_zas65_1 ._img1_zas65_20 {
+  transform: translate3d(calc(50vw - 50vw * var(--scrolled)), 0, 0);
+}
+._box_zas65_1 ._img2_zas65_23:after {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  left: 100%;
+  top: 0;
+  background: var(--mainColor);
+  transform: translate3d(0, calc(300px * var(--scrolled)), 0);
+}
+._box_zas65_1 ._img3_zas65_33 {
+  opacity: calc(1 * var(--scrolled));
+  transform: scale(calc(1 * var(--scrolled)));
+}

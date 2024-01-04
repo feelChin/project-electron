@@ -1,0 +1,31 @@
+@import "@style/_util.scss";
+
+.accordion {
+  display: flex;
+  .item {
+    width: 200px;
+    margin: 0 20px;
+    .accordionHead {
+      height: 50px;
+      width: 100%;
+      @include flex;
+      background: var(--black);
+      color: var(--white);
+      &:global(.active) {
+        background: var(--black);
+        color: var(--white);
+      }
+    }
+    .accordionContent {
+      overflow: hidden;
+      height: 0;
+      transition: height 0.4s;
+      margin-top: 10px;
+      background: var(--black);
+      color: var(--white);
+      div {
+        padding: 5px;
+      }
+    }
+  }
+}

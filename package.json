@@ -1,0 +1,33 @@
+{
+  "name": "ceshimingzi",
+  "version": "1.5.0",
+  "main": "./out/main/index.js",
+  "author": "feelChin",
+  "homepage": "./",
+  "scripts": {
+    "start": "electron-vite dev",
+    "preview": "electron-vite preview",
+    "build:win": "node ./pubilc/version.js && electron-vite build && electron-builder --win --config"
+  },
+  "dependencies": {
+    "@babel/plugin-transform-react-jsx": "^7.21.0",
+    "@electron-toolkit/preload": "^1.0.3",
+    "@electron-toolkit/utils": "^1.0.2",
+    "adm-zip": "^0.5.10",
+    "electron-updater": "^6.1.1"
+  },
+  "devDependencies": {
+    "@electron/notarize": "^1.2.3",
+    "@react-spring/web": "^9.7.2",
+    "@vitejs/plugin-react": "^3.1.0",
+    "antd": "^5.6.4",
+    "electron": "^20.0.0",
+    "electron-builder": "^24.4.0",
+    "electron-toolkit": "^1.0.24",
+    "electron-vite": "^1.0.20",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.9.0",
+    "sass": "^1.60.0"
+  }
+}

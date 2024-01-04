@@ -1,0 +1,28 @@
+@import "@style/_util.scss";
+
+.websocket {
+  background: var(--white);
+  color: var(--black);
+  .websocketWrapper {
+    overflow: auto;
+    display: flex;
+    flex-direction: column-reverse;
+    .item {
+      padding: 20px 0;
+    }
+  }
+  .buttonFlex {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    display: flex;
+    :global(button) {
+      cursor: pointer;
+      width: 150px;
+      height: 40px;
+      margin-right: 40px;
+      background: var(--mainColor);
+      color: white;
+    }
+  }
+}

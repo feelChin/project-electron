@@ -1,0 +1,60 @@
+._tableAddAndRemove_1psm8_1 {
+  padding: 30px;
+}
+._tableAddAndRemove_1psm8_1 ._tableAddAndRemoveWrapper_1psm8_4 {
+  table-layout: fixed;
+  width: 300px;
+}
+._tableAddAndRemove_1psm8_1 ._tableAddAndRemoveWrapper_1psm8_4 ._rowItem_1psm8_8 {
+  position: relative;
+  display: flex;
+}
+._tableAddAndRemove_1psm8_1 ._tableAddAndRemoveWrapper_1psm8_4 ._rowItem_1psm8_8:last-child ._item_1psm8_12 {
+  border-bottom-color: var(--black);
+}
+._tableAddAndRemove_1psm8_1 ._tableAddAndRemoveWrapper_1psm8_4 ._rowItem_1psm8_8 ._remove_1psm8_15 {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  left: 100%;
+  border-radius: 50%;
+  background: var(--vanilla);
+  color: white;
+  margin-left: 2vw;
+}
+._tableAddAndRemove_1psm8_1 ._tableAddAndRemoveWrapper_1psm8_4 ._item_1psm8_12 {
+  border: 1px solid transparent;
+  border-right-color: var(--black3);
+  border-top-color: var(--black3);
+  height: 40px;
+  width: 50%;
+  color: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+._tableAddAndRemove_1psm8_1 ._tableAddAndRemoveWrapper_1psm8_4 ._item_1psm8_12:first-child {
+  border-left-color: var(--black3);
+}
+._tableAddAndRemove_1psm8_1 ._tableAddAndRemoveWrapper_1psm8_4 ._item_1psm8_12 input {
+  height: 100%;
+  padding: 0 15px;
+  width: 100%;
+  background: transparent;
+  color: var(--black);
+}
+._tableAddAndRemove_1psm8_1 ._flex_1psm8_49 {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+._tableAddAndRemove_1psm8_1 ._flex_1psm8_49 ._add_1psm8_54 {
+  background: var(--mainColor);
+  color: white;
+  padding: 10px 15px;
+  width: 48%;
+  cursor: pointer;
+}

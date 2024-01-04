@@ -1,0 +1,248 @@
+._user_1m0gd_1 {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  color: var(--black);
+}
+._user_1m0gd_1 img {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+}
+._user_1m0gd_1 h5 {
+  font-size: 15px;
+}
+._user_1m0gd_1 ._font_1m0gd_15 {
+  margin-left: 10px;
+}
+._user_1m0gd_1 ._font_1m0gd_15 ._text_1m0gd_18 {
+  display: flex;
+  align-items: center;
+}
+._user_1m0gd_1 ._font_1m0gd_15 ._text_1m0gd_18 ._dot_1m0gd_22 {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgb(0, 255, 34);
+  margin-right: 3px;
+}
+._user_1m0gd_1 ._font_1m0gd_15 ._text_1m0gd_18 p {
+  font-size: 12px;
+}._nav_12wg4_1 {
+  position: relative;
+  height: 52px;
+  padding: 0 20px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  -webkit-app-region: drag;
+  z-index: 9;
+  background: var(--white);
+}
+._nav_12wg4_1 nav {
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: center;
+  left: 180px;
+  height: 100%;
+  z-index: 3;
+  -webkit-app-region: no-drag;
+  cursor: pointer;
+}
+._nav_12wg4_1 nav ._item_12wg4_23 {
+  font-size: 15px;
+  padding: 0 25px;
+  position: relative;
+  color: var(--black);
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.4s;
+}
+._nav_12wg4_1 nav ._item_12wg4_23._active_12wg4_35 {
+  color: white;
+}
+._nav_12wg4_1 nav ._item_12wg4_23._active_12wg4_35:after {
+  height: 100%;
+}
+._nav_12wg4_1 nav ._item_12wg4_23:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  height: 0;
+  z-index: -1;
+  transition: 0.4s;
+  background: linear-gradient(to top, var(--mainColor), white);
+}
+._nav_12wg4_1 ._theme_12wg4_53 {
+  -webkit-app-region: no-drag;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 120px;
+  width: 40px;
+  height: 20px;
+  border: 1px solid var(--mainColor);
+  border-radius: 20px;
+}
+._nav_12wg4_1 ._theme_12wg4_53._active_12wg4_35 ._dot_12wg4_65 {
+  left: calc(100% - 16px);
+  background: white;
+}
+._nav_12wg4_1 ._theme_12wg4_53:after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  height: 14px;
+  left: 2px;
+  right: 2px;
+  border-radius: 14px;
+  border: 1px solid var(--mainColor);
+  background: var(--mainColor);
+  opacity: 0.6;
+}
+._nav_12wg4_1 ._theme_12wg4_53 ._dot_12wg4_65 {
+  position: absolute;
+  bottom: 2px;
+  width: 14px;
+  height: 14px;
+  left: 2px;
+  border-radius: 50%;
+  background: var(--black);
+  z-index: 2;
+  transition: 0.4s;
+}
+._nav_12wg4_1 ._menuWrapper_12wg4_92 {
+  position: absolute;
+  right: 20px;
+  top: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+._nav_12wg4_1 ._menuWrapper_12wg4_92 ._menu_12wg4_92 {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  margin-left: 20px;
+  -webkit-app-region: no-drag;
+  cursor: pointer;
+}
+._nav_12wg4_1 ._menuWrapper_12wg4_92 ._minimize_12wg4_108 {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+._nav_12wg4_1 ._menuWrapper_12wg4_92 ._minimize_12wg4_108 ._minimizeLine_12wg4_113 {
+  position: relative;
+  width: 18px;
+  height: 1px;
+  background: var(--black);
+}
+._nav_12wg4_1 ._menuWrapper_12wg4_92 ._minimize_12wg4_108 ._minimizeLine_12wg4_113:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 100%;
+  right: 0;
+  background: var(--mainColor);
+  transition: 0.4s;
+}
+._nav_12wg4_1 ._menuWrapper_12wg4_92 ._minimize_12wg4_108:hover ._minimizeLine_12wg4_113:after {
+  left: 0;
+  width: 100%;
+}
+._nav_12wg4_1 ._menuWrapper_12wg4_92 ._maximize_12wg4_132 {
+  width: 16px;
+  height: 16px;
+  margin: 0 20px;
+}
+._nav_12wg4_1 ._menuWrapper_12wg4_92 ._maximize_12wg4_132 ._topMaximizeLine_12wg4_137 {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--black);
+}
+._nav_12wg4_1 ._menuWrapper_12wg4_92 ._maximize_12wg4_132 ._rightMaximizeLine_12wg4_144 {
+  position: absolute;
+  right: 0;
+  width: 1px;
+  height: 100%;
+  background: var(--black);
+}
+._nav_12wg4_1 ._menuWrapper_12wg4_92 ._maximize_12wg4_132 ._bottomMaximizeLine_12wg4_151 {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--black);
+}
+._nav_12wg4_1 ._menuWrapper_12wg4_92 ._maximize_12wg4_132 ._leftMaximizeLine_12wg4_158 {
+  position: absolute;
+  left: 0;
+  width: 1px;
+  height: 100%;
+  background: var(--black);
+}
+._nav_12wg4_1 ._menuWrapper_12wg4_92 ._maximize_12wg4_132:hover ._beforeMaximizeLine_12wg4_165:after,
+._nav_12wg4_1 ._menuWrapper_12wg4_92 ._maximize_12wg4_132:hover ._afterMaximizeLine_12wg4_166:after {
+  left: 0;
+  width: 100%;
+}
+._nav_12wg4_1 ._menuWrapper_12wg4_92 ._close_12wg4_170 ._beforeCloseLine_12wg4_170,
+._nav_12wg4_1 ._menuWrapper_12wg4_92 ._close_12wg4_170 ._afterCloseLine_12wg4_171 {
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background: var(--black);
+  top: 50%;
+}
+._nav_12wg4_1 ._menuWrapper_12wg4_92 ._close_12wg4_170 ._beforeCloseLine_12wg4_170:after,
+._nav_12wg4_1 ._menuWrapper_12wg4_92 ._close_12wg4_170 ._afterCloseLine_12wg4_171:after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 100%;
+  right: 0;
+  background: var(--mainColor);
+  transition: 0.4s;
+}
+._nav_12wg4_1 ._menuWrapper_12wg4_92 ._close_12wg4_170 ._beforeCloseLine_12wg4_170 {
+  transform: translateY(-50%) rotate(45deg);
+}
+._nav_12wg4_1 ._menuWrapper_12wg4_92 ._close_12wg4_170 ._afterCloseLine_12wg4_171 {
+  transform: translateY(-50%) rotate(-45deg);
+}
+._nav_12wg4_1 ._menuWrapper_12wg4_92 ._close_12wg4_170:hover ._beforeCloseLine_12wg4_170:after,
+._nav_12wg4_1 ._menuWrapper_12wg4_92 ._close_12wg4_170:hover ._afterCloseLine_12wg4_171:after {
+  left: 0;
+  width: 100%;
+}._wrapper_vaj9w_1 {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  background: var(--white);
+}
+._wrapper_vaj9w_1 ._item_vaj9w_7 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+}
+._wrapper_vaj9w_1 ._item_vaj9w_7 > div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

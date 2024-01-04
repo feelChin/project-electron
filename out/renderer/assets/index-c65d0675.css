@@ -1,0 +1,60 @@
+._box_msinn_1 {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+._box_msinn_1 ._render_msinn_8 {
+  margin-bottom: 80px;
+}
+._box_msinn_1 ._flex_msinn_11 {
+  display: flex;
+}
+._box_msinn_1 ._text_msinn_14 {
+  display: flex;
+  align-items: center;
+}
+._box_msinn_1 input {
+  height: 30px;
+  margin-right: 30px;
+  border-bottom: 1px solid var(--black9);
+}
+._box_msinn_1 button {
+  width: 100px;
+  height: 40px;
+  background: var(--mainColor);
+  color: var(--white);
+  font-size: 14px;
+  cursor: pointer;
+}
+._box_msinn_1 .num_ani {
+  display: inline-block;
+  font-size: 18px;
+}
+@keyframes _ani_msinn_1 {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, calc(-1 * var(--h) * var(--num)), 0);
+  }
+}
+._box_msinn_1 .num_ani .num_ani_item {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  display: inline-block;
+}
+._box_msinn_1 .num_ani .num_ani_item_wrapper {
+  position: absolute;
+  top: 0;
+  left: 0%;
+  animation: _ani_msinn_1 2s ease-in-out forwards;
+  animation-delay: calc(var(--delay) * 1s);
+}
+._box_msinn_1 .num_ani .num_ani_item_wrapper i {
+  display: block;
+  height: var(--h);
+  font-style: inherit;
+}

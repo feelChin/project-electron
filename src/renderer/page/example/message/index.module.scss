@@ -1,0 +1,13 @@
+@import "@style/_util.scss";
+
+.messageWrapper {
+  display: flex;
+  .item {
+    background: var(--mainColor);
+    padding: 10px 30px;
+    @include flex;
+    color: white;
+    margin: 0 30px;
+    cursor: pointer;
+  }
+}

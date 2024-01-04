@@ -1,0 +1,64 @@
+._render_1d8ag_1 {
+  position: relative;
+  border: 1px solid var(--black9);
+  width: 300px;
+  height: 100px;
+  margin-top: 50px;
+  overflow: hidden;
+}
+._render_1d8ag_1 > div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+@keyframes _enter_1d8ag_32 {
+  0% {
+    transform: translateX(calc(var(--level) * 100%));
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes _leave_1d8ag_35 {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(var(--level) * -100%));
+  }
+}
+._render_1d8ag_1 > div.enter {
+  animation: _enter_1d8ag_32 1s forwards;
+}
+._render_1d8ag_1 > div.leave {
+  animation: _leave_1d8ag_35 1s forwards;
+}
+._render_1d8ag_1 > div.init {
+  animation: _enter_1d8ag_32 0s forwards;
+}
+._render_1d8ag_1 .element {
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+}
+._render_1d8ag_1 .element1 {
+  background: var(--mainColor);
+}
+._render_1d8ag_1 .element2 {
+  background: var(--react);
+}
+._render_1d8ag_1 .element3 {
+  background: var(--vanilla);
+}
+nav {
+  display: flex;
+}
+nav div {
+  margin: 0 20px;
+  cursor: pointer;
+}
+nav div.active {
+  color: var(--mainColor);
+}

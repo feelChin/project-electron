@@ -1,0 +1,60 @@
+@import "@style/_util.scss";
+
+.tableAddAndRemove {
+  padding: 30px;
+  .tableAddAndRemoveWrapper {
+    table-layout: fixed;
+    width: 300px;
+    .rowItem {
+      position: relative;
+      display: flex;
+      &:last-child {
+        .item {
+          border-bottom-color: var(--black);
+        }
+      }
+      .remove {
+        cursor: pointer;
+        @include transformMarginTop;
+        width: 28px;
+        height: 28px;
+        left: 100%;
+        border-radius: 50%;
+        background: var(--vanilla);
+        color: white;
+        margin-left: 2vw;
+      }
+    }
+    .item {
+      border: 1px solid transparent;
+      border-right-color: var(--black3);
+      border-top-color: var(--black3);
+      height: 40px;
+      width: 50%;
+      color: var(--black);
+      @include flex;
+      &:first-child {
+        border-left-color: var(--black3);
+      }
+      input {
+        height: 100%;
+        padding: 0 15px;
+        width: 100%;
+        background: transparent;
+        color: var(--black);
+      }
+    }
+  }
+  .flex {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    .add {
+      background: var(--mainColor);
+      color: white;
+      padding: 10px 15px;
+      width: 48%;
+      cursor: pointer;
+    }
+  }
+}

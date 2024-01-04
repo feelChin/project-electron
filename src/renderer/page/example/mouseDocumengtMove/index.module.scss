@@ -1,0 +1,15 @@
+@import "@style/_util.scss";
+
+.img {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.07);
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}

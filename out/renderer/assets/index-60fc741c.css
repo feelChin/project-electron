@@ -1,0 +1,153 @@
+._update_1l573_1 {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+._update_1l573_1 ._updatePool_1l573_10 {
+  position: absolute;
+  width: 80vh;
+  height: 80vh;
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background: linear-gradient(to right, #9e7ff1, #7a51ec);
+}
+@keyframes _r_1l573_1 {
+  to {
+    transform: translate3d(-50%, 0, 0) rotate(360deg);
+  }
+}
+@keyframes _t_1l573_52 {
+  from {
+    top: -100%;
+  }
+  to {
+    top: -200%;
+  }
+}
+._update_1l573_1 ._updatePool_1l573_10:after, ._update_1l573_1 ._updatePool_1l573_10:before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  left: 50%;
+  top: calc(-105% - var(--top));
+  transition: 0.1s;
+  z-index: 3;
+  transform: translate3d(-50%, 0, 0);
+  animation: _r_1l573_1 3s linear infinite;
+}
+._update_1l573_1 ._updatePool_1l573_10:after {
+  border-radius: 43% 42% 45% 40%;
+  background: white;
+}
+._update_1l573_1 ._updatePool_1l573_10:before {
+  border-radius: 41% 43% 42% 45%;
+  background: rgb(214, 211, 211);
+}
+._update_1l573_1 ._updatePool_1l573_10 ._text_1l573_52 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #000;
+  z-index: 6;
+  font-size: 20px;
+}
+._update_1l573_1 ._updateErr_1l573_66 {
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: linear-gradient(to right, #9e7ff1, #7a51ec);
+}
+._update_1l573_1 ._updateErr_1l573_66 h5 {
+  font-size: 20px;
+  color: red;
+  margin-bottom: 30px;
+}
+._update_1l573_1 ._updateErr_1l573_66 button {
+  width: 80px;
+  height: 32px;
+  --color: rgb(49, 146, 211);
+  --color1: rgb(32, 131, 224);
+  --color2: rgb(22, 92, 223);
+  position: relative;
+  cursor: pointer;
+  border-radius: var(--borde-radius);
+  background: var(--color);
+  overflow: hidden;
+  transition: 0.4s;
+}
+._update_1l573_1 ._updateErr_1l573_66 button.none {
+  background: var(--none-color);
+  pointer-events: none;
+}
+._update_1l573_1 ._updateErr_1l573_66 button.default {
+  background: var(--default-color);
+  border: 1px solid var(--color);
+}
+._update_1l573_1 ._updateErr_1l573_66 button.default span {
+  color: var(--color);
+  transition: color 0.4s;
+}
+._update_1l573_1 ._updateErr_1l573_66 button.default:hover {
+  border-color: transparent;
+}
+._update_1l573_1 ._updateErr_1l573_66 button.default:hover span {
+  color: white;
+}
+._update_1l573_1 ._updateErr_1l573_66 button.default:active {
+  border-color: transparent;
+}
+._update_1l573_1 ._updateErr_1l573_66 button.default:active span {
+  color: white;
+}
+._update_1l573_1 ._updateErr_1l573_66 button span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  z-index: 3;
+}
+._update_1l573_1 ._updateErr_1l573_66 button:before, ._update_1l573_1 ._updateErr_1l573_66 button:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: 0.4s;
+}
+._update_1l573_1 ._updateErr_1l573_66 button:before {
+  background: var(--color2);
+  z-index: 1;
+}
+._update_1l573_1 ._updateErr_1l573_66 button:after {
+  background: var(--color3);
+  z-index: 2;
+}
+._update_1l573_1 ._updateErr_1l573_66 button:hover:before {
+  opacity: 1;
+}
+._update_1l573_1 ._updateErr_1l573_66 button:active:after {
+  opacity: 1;
+}

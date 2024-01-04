@@ -1,0 +1,62 @@
+@import "@style/_util.scss";
+
+.box {
+  font-size: 18px;
+  @include flex;
+  flex-direction: column;
+  .render {
+    margin-bottom: 80px;
+  }
+  .flex {
+    display: flex;
+  }
+  .text {
+    display: flex;
+    align-items: center;
+  }
+  input {
+    height: 30px;
+    margin-right: 30px;
+    border-bottom: 1px solid var(--black9);
+  }
+  button {
+    width: 100px;
+    height: 40px;
+    background: var(--mainColor);
+    color: var(--white);
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  :global(.num_ani) {
+    display: inline-block;
+    font-size: 18px;
+    @keyframes ani {
+      0% {
+        transform: translate3d(0, 0, 0);
+      }
+
+      100% {
+        transform: translate3d(0, calc(-1 * var(--h) * var(--num)), 0);
+      }
+    }
+    :global(.num_ani_item) {
+      position: relative;
+      overflow: hidden;
+      height: 100%;
+      display: inline-block;
+    }
+    :global(.num_ani_item_wrapper) {
+      position: absolute;
+      top: 0;
+      left: 0%;
+      animation: ani 2s ease-in-out forwards;
+      animation-delay: calc(var(--delay) * 1s);
+      i {
+        display: block;
+        height: var(--h);
+        font-style: inherit;
+      }
+    }
+  }
+}

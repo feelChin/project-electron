@@ -1,0 +1,62 @@
+.customMessage {
+  position: fixed;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+}
+.customMessage .messageTranstion {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.customMessage .message {
+  display: flex;
+  align-items: center;
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.15);
+  padding: 10px 30px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  background: white;
+  animation: start 0.5s forwards, end 0.5s var(--time) forwards;
+}
+@keyframes start {
+  0% {
+    opacity: 0;
+    transform: translateY(-30%) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes end {
+  to {
+    opacity: 0;
+    transform: translateY(-30%) scale(0.9);
+  }
+}
+.customMessage .message .icon {
+  margin-right: 10px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+.customMessage .message .icon.success {
+  background: rgb(59, 243, 59);
+}
+.customMessage .message .icon.error {
+  background: red;
+}._messageWrapper_dilip_1 {
+  display: flex;
+}
+._messageWrapper_dilip_1 ._item_dilip_4 {
+  background: var(--mainColor);
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin: 0 30px;
+  cursor: pointer;
+}

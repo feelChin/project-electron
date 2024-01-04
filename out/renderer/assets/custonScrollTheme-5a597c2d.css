@@ -1,0 +1,23 @@
+._myScroll_18as4_1 {
+  position: relative;
+  width: 100%;
+  display: inline-block;
+  overflow: hidden;
+}
+._myScroll_18as4_1 ._scrollBar_18as4_7 {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 100%;
+}
+._myScroll_18as4_1 ._scrollBar_18as4_7 span {
+  position: absolute;
+  top: calc(var(--scroll) * 1%);
+  height: calc(var(--height) * 1px);
+  width: 100%;
+  border-radius: 6px;
+  background: var(--black);
+  transition: 0.4s;
+}

@@ -1,0 +1,29 @@
+._box_1tvsp_1 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+._box_1tvsp_1 ._wrapper_1tvsp_8 {
+  position: relative;
+  height: 300px;
+  width: 300px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+._box_1tvsp_1 ._wrapper_1tvsp_8 ._virtualLoop_1tvsp_14 {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+._box_1tvsp_1 ._wrapper_1tvsp_8 ._virtualLoop_1tvsp_14 .item {
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+}
+._box_1tvsp_1 ._wrapper_1tvsp_8 ._virtualLoop_1tvsp_14 .item:nth-child(even) {
+  background: #f9f9f9;
+}
+._box_1tvsp_1 ._wrapper_1tvsp_8 ._virtualLoop_1tvsp_14 .myScroll {
+  transition: 0s;
+}

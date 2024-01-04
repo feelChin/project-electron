@@ -1,0 +1,132 @@
+@import "_reset.scss";
+@import "_util.scss";
+
+:root {
+  --mainColor: #7a51ec;
+  --react: #0c98cf;
+  --vanilla: #f03;
+}
+
+[data-theme="light"] {
+  --black: black;
+  --black3: #333;
+  --black6: #666;
+  --black9: #999;
+  --white: white;
+  --white3: #f3f3f3;
+  --white6: #f6f6f6;
+  --white9: #f9f9f9;
+}
+
+[data-theme="dark"] {
+  --black: white;
+  --black3: #f3f3f3;
+  --black6: #f6f6f6;
+  --black9: #f9f9f9;
+  --white: black;
+  --white3: #333;
+  --white6: #666;
+  --white9: #999;
+}
+
+body {
+  @include flex;
+}
+
+.root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+
+.iconArrow {
+  width: 10px;
+  height: 20px;
+  position: relative;
+  transition: 0.4s;
+  cursor: pointer;
+  &:hover {
+    &:after,
+    &:before {
+      background: var(--mainColor);
+    }
+  }
+  &:after,
+  &:before {
+    position: absolute;
+    left: 0;
+    content: "";
+    width: 100%;
+    height: 1px;
+    background: var(--black);
+    top: 50%;
+    transform-origin: left;
+    transition: 0.4s;
+  }
+  &:after {
+    transform: translateY(-50%) rotate(40deg);
+  }
+  &:before {
+    transform: translateY(-50%) rotate(-40deg);
+  }
+}
+
+.skFadingCircle {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--mainColor);
+  @-webkit-keyframes sk-circleFadeDelay {
+    0%,
+    39%,
+    100% {
+      opacity: 0;
+    }
+    40% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes sk-circleFadeDelay {
+    0%,
+    39%,
+    100% {
+      opacity: 0;
+    }
+    40% {
+      opacity: 1;
+    }
+  }
+  .skCircle {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    &:before {
+      content: "";
+      display: block;
+      margin: 0 auto;
+      width: 15%;
+      height: 15%;
+      background-color: currentColor;
+      border-radius: 100%;
+      -webkit-animation: sk-circleFadeDelay 1.2s infinite ease-in-out both;
+      animation: sk-circleFadeDelay 1.2s infinite ease-in-out both;
+    }
+  }
+  @for $i from 1 through 12 {
+    .skCircle:nth-child(#{$i}) {
+      transform: rotate(calc(30deg * #{$i}));
+      &:before {
+        animation-delay: calc(-1.2s + (0.1s * #{$i}));
+      }
+    }
+  }
+}

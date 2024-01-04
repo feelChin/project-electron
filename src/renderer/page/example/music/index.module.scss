@@ -1,0 +1,107 @@
+@import "@style/_util.scss";
+
+.music {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-bottom: 10vh;
+  justify-content: center;
+  .avatar {
+    width: 50%;
+    overflow: hidden;
+    @include flex;
+    flex-direction: column;
+    img {
+      width: 160px;
+      padding: 8px;
+      background: var(--white);
+      border-radius: 6px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    }
+    .control {
+      display: flex;
+      align-items: center;
+      margin-top: 30px;
+      padding: 15px;
+      background: var(--white3);
+      border-radius: 6px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+      color: var(--black);
+      .menu {
+        position: relative;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        margin-right: 30px;
+        &.play {
+          &:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            border: 10px solid transparent;
+            border-left-color: var(--mainColor);
+            transform: translateX(25%);
+          }
+        }
+        &.pause {
+          &:after,
+          &:before {
+            content: "";
+            position: absolute;
+            top: 10%;
+            width: 2px;
+            height: 80%;
+            background: var(--mainColor);
+          }
+          &:after {
+            left: 5px;
+          }
+          &:before {
+            right: 5px;
+          }
+        }
+      }
+      .line {
+        position: relative;
+        width: 200px;
+        height: 2px;
+        background: var(--white9);
+        margin: 0 30px;
+        &:after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: calc(var(--line) * 1%);
+          height: 100%;
+          background: var(--mainColor);
+        }
+      }
+    }
+  }
+  .lrcWrapper {
+    position: relative;
+    width: 40%;
+    height: 50vh;
+    overflow: hidden;
+    overflow-y: auto;
+    .lrc {
+      @include absolute;
+      text-align: center;
+      transform: translate3d(0, 100%, 0);
+      &.active {
+        transition: 0.3s;
+        transition-timing-function: ease-in-out;
+      }
+      .item {
+        @include flex;
+        color: var(--black9);
+        &.active {
+          color: var(--mainColor);
+        }
+      }
+    }
+  }
+}

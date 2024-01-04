@@ -1,0 +1,105 @@
+@import "@style/_util.scss";
+
+.plateKeyboardWrapper {
+  position: relative;
+  height: 100%;
+  .plateKeyboardWrapperOnclick {
+    @include absolute;
+  }
+
+  .plateKeyboardWrapperBox {
+    position: relative;
+    pointer-events: none;
+    button {
+      font-size: 24px;
+      width: 100%;
+      margin-top: 30px;
+      padding: 15px;
+      background: var(--mainColor);
+      color: white;
+      pointer-events: auto;
+      transition: 0.4s;
+      opacity: 0.3;
+      &.active {
+        cursor: pointer;
+        opacity: 1;
+      }
+    }
+
+    .keyInputListWrapper {
+      pointer-events: auto;
+      display: flex;
+      justify-content: center;
+
+      .keyInputList {
+        display: flex;
+        border: 1px solid var(--white3);
+
+        .name {
+          color: var(--vanilla);
+        }
+
+        li {
+          font-size: 30px;
+          width: 100px;
+          height: 100px;
+          border-right: 1px solid var(--white3);
+          @include flex;
+          color: var(--black3);
+          span {
+            opacity: 0.3;
+          }
+        }
+      }
+    }
+  }
+
+  @keyframes keyBoard {
+    0% {
+      transform: translateY(100%);
+    }
+
+    100% {
+      transform: translateY(0%);
+    }
+  }
+
+  .keyBoard {
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    right: 0;
+    background: var(--white3);
+    padding: 15px;
+    border-radius: 6px;
+    z-index: 999;
+    animation: keyBoard 0.3s forwards;
+
+    .keyBoardList {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      .item {
+        width: 50px;
+        height: 50px;
+        margin: 1vw;
+        @include flex;
+        color: var(--black6);
+        background: var(--white);
+        border-radius: 1.067vw;
+        transition: 0.4s;
+        cursor: pointer;
+        &:hover {
+          background: var(--mainColor);
+          color: white;
+        }
+        &.special {
+          width: 50px;
+          height: 50px;
+          margin: 1vw 0.9vw;
+        }
+      }
+    }
+  }
+}

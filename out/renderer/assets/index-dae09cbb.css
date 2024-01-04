@@ -1,0 +1,30 @@
+._box_eypep_1 {
+  display: flex;
+  height: 300px;
+}
+._box_eypep_1 ._wrapper_eypep_5 {
+  width: 300px;
+  margin-right: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+._box_eypep_1 ._wrapper_eypep_5 ._item_eypep_12 {
+  display: flex;
+  align-items: center;
+}
+._box_eypep_1 ._wrapper_eypep_5 ._item_eypep_12 h5 {
+  font-weight: 700;
+  margin-right: 20px;
+}
+._box_eypep_1 ._wrapper_eypep_5 ._item_eypep_12 p {
+  margin-right: 15px;
+}
+._box_eypep_1 ._log_eypep_23 {
+  width: 100px;
+  color: var(--black6);
+  background: var(--white6);
+}
+._box_eypep_1 ._log_eypep_23 div {
+  margin: 5px;
+}

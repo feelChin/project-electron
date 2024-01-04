@@ -1,0 +1,81 @@
+@import "@style/_util.scss";
+
+.update {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  @include flex;
+  flex-direction: column;
+  .updatePool {
+    position: absolute;
+    width: 80vh;
+    height: 80vh;
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background: linear-gradient(to right, #9e7ff1, #7a51ec);
+    @keyframes r {
+      to {
+        transform: translate3d(-50%, 0, 0) rotate(360deg);
+      }
+    }
+    @keyframes t {
+      from {
+        top: -100%;
+      }
+      to {
+        top: -200%;
+      }
+    }
+    &:after,
+    &:before {
+      content: "";
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      left: 50%;
+      top: calc(-105% - var(--top));
+      transition: 0.1s;
+      z-index: 3;
+      transform: translate3d(-50%, 0, 0);
+      animation: r 3s linear infinite;
+    }
+    &:after {
+      border-radius: 43% 42% 45% 40%;
+      background: white;
+    }
+    &:before {
+      border-radius: 41% 43% 42% 45%;
+      background: rgb(214, 211, 211);
+    }
+    .text {
+      @include absolute;
+      @include flex;
+      flex-direction: column;
+      color: #000;
+      z-index: 6;
+      font-size: 20px;
+    }
+  }
+  .updateErr {
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    @include flex;
+    flex-direction: column;
+    background: linear-gradient(to right, #9e7ff1, #7a51ec);
+    h5 {
+      font-size: 20px;
+      color: red;
+      margin-bottom: 30px;
+    }
+    button {
+      width: 80px;
+      height: 32px;
+      --color: rgb(49, 146, 211);
+      --color1: rgb(32, 131, 224);
+      --color2: rgb(22, 92, 223);
+      @include status;
+    }
+  }
+}

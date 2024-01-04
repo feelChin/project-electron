@@ -1,0 +1,33 @@
+@import "@style/_util.scss";
+
+.user {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  color: var(--black);
+  img {
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+  }
+  h5 {
+    font-size: 15px;
+  }
+  .font {
+    margin-left: 10px;
+    .text {
+      display: flex;
+      align-items: center;
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: rgb(0, 255, 34);
+        margin-right: 3px;
+      }
+      p {
+        font-size: 12px;
+      }
+    }
+  }
+}

@@ -1,0 +1,56 @@
+@import "@style/_util.scss";
+
+.customMessage {
+  position: fixed;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+
+  .messageTranstion {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .message {
+    display: flex;
+    align-items: center;
+    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.15);
+    padding: 10px 30px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    background: white;
+    @keyframes start {
+      0% {
+        opacity: 0;
+        transform: translateY(-30%) scale(0.9);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    @keyframes end {
+      to {
+        opacity: 0;
+        transform: translateY(-30%) scale(0.9);
+      }
+    }
+    animation: start 0.5s forwards, end 0.5s var(--time) forwards;
+
+    .icon {
+      margin-right: 10px;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      &.success {
+        background: rgb(59, 243, 59);
+      }
+
+      &.error {
+        background: red;
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+._scroll_19l0c_1 {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100%;
+}
+._scroll_19l0c_1 ._wrapper_19l0c_6 {
+  position: relative;
+  width: 100%;
+  height: 2000px;
+}
+._scroll_19l0c_1 ._wrapper_19l0c_6 ._fixed_19l0c_11 {
+  position: sticky;
+  top: 0;
+  font-size: 0;
+  line-height: 1;
+}
+._scroll_19l0c_1 ._wrapper_19l0c_6 ._fixed_19l0c_11 canvas {
+  pointer-events: none;
+  border: 0;
+}
+._scroll_19l0c_1 ._wrapper_19l0c_6 ._fixed_19l0c_11 ._text_19l0c_21 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  color: white;
+  font-size: 30px;
+  z-index: 3;
+  padding-top: 15vh;
+}
+._scroll_19l0c_1 ._title_19l0c_33 {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}

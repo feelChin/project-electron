@@ -1,0 +1,49 @@
+@import "@style/_util.scss";
+
+.pageFixed {
+  position: absolute;
+  right: 5%;
+  top: 13%;
+  background: var(--white);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  padding: 5px 10px;
+  font-size: 12px;
+  border-radius: 5px;
+  color: var(--black);
+  .navItem {
+    cursor: pointer;
+    &:global(.active) {
+      color: red;
+    }
+    .head {
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+      height: 18px;
+    }
+  }
+}
+
+.page {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  .pageItem {
+    width: 100%;
+    @include flex;
+    color: white;
+    font-size: 33px;
+    @for $i from 1 through 33 {
+      &:nth-child(#{$i}) {
+        height: random_range(60, 160) * 1vh;
+        background: rgb(
+          random_range(0, 255),
+          random_range(0, 255),
+          random_range(0, 255)
+        );
+      }
+    }
+  }
+}

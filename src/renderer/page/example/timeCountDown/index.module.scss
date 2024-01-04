@@ -1,0 +1,14 @@
+@import "@style/_util.scss";
+
+.timeCountDown {
+  color: var(--black);
+  background: var(--white);
+  p {
+    text-align: center;
+    margin-bottom: 5vw;
+  }
+  :global(.timeCountDown) {
+    font-size: 16px;
+    text-align: center;
+  }
+}

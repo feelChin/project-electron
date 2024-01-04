@@ -1,0 +1,23 @@
+.myScroll {
+  position: relative;
+  width: 100%;
+  display: inline-block;
+  overflow: hidden;
+  .scrollBar {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 100%;
+    span {
+      position: absolute;
+      top: calc(var(--scroll) * 1%);
+      height: calc(var(--height) * 1px);
+      width: 100%;
+      border-radius: 6px;
+      background: var(--black);
+      transition: 0.4s;
+    }
+  }
+}

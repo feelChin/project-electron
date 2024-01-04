@@ -1,0 +1,28 @@
+._virtual_102r5_1 {
+  position: relative;
+  height: 60vh;
+  width: 40%;
+  margin: 50px;
+  overflow: hidden;
+  background: var(--white3);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+._virtual_102r5_1 ._virtualList_102r5_10 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+._virtual_102r5_1 ._virtualList_102r5_10 ._item_102r5_17 {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 30px;
+  font-size: 16px;
+  color: var(--black);
+}
+._virtual_102r5_1 ._virtualList_102r5_10 ._item_102r5_17:nth-child(even) {
+  background: var(--white9);
+}

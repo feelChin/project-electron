@@ -1,0 +1,97 @@
+@import "@style/_util.scss";
+
+.theQuest {
+  :global(.itemFace) {
+    width: 50px;
+    pointer-events: auto;
+  }
+  :global(.itemAni) {
+    transition: 0.3s;
+    z-index: 99;
+  }
+
+  .quest {
+    position: relative;
+    width: 500px;
+    height: 300px;
+    .questWrapper {
+      @include absolute;
+      @include flex;
+      flex-direction: column;
+      .itemWrapper {
+        position: absolute;
+        pointer-events: none;
+      }
+      .itemList {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+      }
+      .item {
+        position: absolute;
+        background: var(--theme-black);
+        &:global(.show) {
+          pointer-events: none;
+          &:after {
+            content: "";
+            @include absolute;
+            background: rgba(0, 0, 0, 0.6);
+          }
+        }
+        &:global(.none) {
+          display: none;
+        }
+      }
+    }
+  }
+  .questRandomList {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    margin: 20px 0;
+    width: 100%;
+    .questRandomItem {
+      height: 100%;
+      &:last-child {
+        .item {
+          right: -66px;
+        }
+      }
+      .item {
+        position: absolute;
+        top: 0;
+        width: 50px;
+        height: 50px;
+        pointer-events: none;
+        &:last-child {
+          pointer-events: auto;
+          &:after {
+            opacity: 0;
+          }
+        }
+        &:after {
+          content: "";
+          @include absolute;
+          transition: 0.4s;
+          background: rgba(0, 0, 0, 0.6);
+        }
+      }
+    }
+  }
+  .questResultList {
+    position: relative;
+    width: 90%;
+    margin-left: 5%;
+    height: 50px;
+    padding: 0 5px;
+    border: 1px dashed var(--mainColor);
+    display: flex;
+    align-items: center;
+    .item {
+      opacity: 0;
+    }
+  }
+}

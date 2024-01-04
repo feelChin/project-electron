@@ -1,0 +1,26 @@
+._websocket_wr5sx_1 {
+  background: var(--white);
+  color: var(--black);
+}
+._websocket_wr5sx_1 ._websocketWrapper_wr5sx_5 {
+  overflow: auto;
+  display: flex;
+  flex-direction: column-reverse;
+}
+._websocket_wr5sx_1 ._websocketWrapper_wr5sx_5 ._item_wr5sx_10 {
+  padding: 20px 0;
+}
+._websocket_wr5sx_1 ._buttonFlex_wr5sx_13 {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  display: flex;
+}
+._websocket_wr5sx_1 ._buttonFlex_wr5sx_13 button {
+  cursor: pointer;
+  width: 150px;
+  height: 40px;
+  margin-right: 40px;
+  background: var(--mainColor);
+  color: white;
+}

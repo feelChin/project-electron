@@ -1,0 +1,75 @@
+@import "@style/_util.scss";
+
+.shoppingCartDot {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--mainColor);
+  transform: translate(-50%, -50%);
+  z-index: 6;
+  will-change: left, top, transform;
+  transition: left 0.3s linear, top 0.3s cubic-bezier(0.5, -0.5, 1, 1);
+}
+
+.shoppingCart {
+  width: 500px;
+  background: var(--light3);
+  color: var(--black);
+  ul {
+    li {
+      position: relative;
+      display: flex;
+      align-items: center;
+      background: var(--white);
+      margin-bottom: 50px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      h5 {
+        font-weight: 700;
+        width: 100px;
+        line-height: 2;
+        margin: 0 3vw;
+      }
+      .img {
+        width: 50px;
+        height: 50px;
+        background: var(--light3);
+      }
+      .priceNumber {
+        display: flex;
+        flex-direction: column;
+        span {
+          line-height: 2;
+          small {
+            opacity: 0.4;
+          }
+        }
+      }
+      .flexButton {
+        display: flex;
+        @include transformMarginTop;
+        right: 5%;
+        button {
+          width: 30px;
+          height: 30px;
+          color: white;
+          &:first-child {
+            background: green;
+          }
+          &:last-child {
+            background: var(--vanilla);
+          }
+        }
+      }
+    }
+  }
+  .productsNumber {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+    font-size: 20px;
+    color: var(--black);
+  }
+}

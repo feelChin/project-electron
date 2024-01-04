@@ -1,0 +1,376 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+small,
+big,
+input,
+textarea,
+button,
+select {
+  font-size: 100%;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  text-align: left;
+}
+
+ul,
+ol,
+menu {
+  list-style: none;
+}
+
+img,
+object,
+input,
+textarea,
+button,
+select {
+  vertical-align: middle;
+}
+
+article,
+aside,
+footer,
+header,
+section,
+nav,
+figure,
+figcaption,
+hgroup,
+details,
+menu {
+  display: block;
+}
+
+textarea {
+  overflow: auto;
+  resize: vertical;
+}
+
+input,
+textarea,
+button,
+select,
+a {
+  outline: none;
+  border: none;
+}
+
+input,
+textarea {
+  display: block;
+  -webkit-user-select: auto;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+mark {
+  background-color: transparent;
+}
+
+a,
+ins,
+s,
+u,
+del {
+  text-decoration: none;
+  color: inherit;
+}
+
+sup,
+sub {
+  vertical-align: baseline;
+}
+
+p {
+  line-height: 1.72;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+time,
+small,
+big {
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+video,
+img,
+audio,
+canvas {
+  font-size: 0;
+  line-height: 1;
+  display: inline-block;
+  zoom: 1;
+}
+
+img {
+  width: 100%;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+:root {
+  --mainColor: #7a51ec;
+  --react: #0c98cf;
+  --vanilla: #f03;
+}
+
+[data-theme=light] {
+  --black: black;
+  --black3: #333;
+  --black6: #666;
+  --black9: #999;
+  --white: white;
+  --white3: #f3f3f3;
+  --white6: #f6f6f6;
+  --white9: #f9f9f9;
+}
+
+[data-theme=dark] {
+  --black: white;
+  --black3: #f3f3f3;
+  --black6: #f6f6f6;
+  --black9: #f9f9f9;
+  --white: black;
+  --white3: #333;
+  --white6: #666;
+  --white9: #999;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+
+.iconArrow {
+  width: 10px;
+  height: 20px;
+  position: relative;
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+.iconArrow:hover:after, .iconArrow:hover:before {
+  background: var(--mainColor);
+}
+
+.iconArrow:after, .iconArrow:before {
+  position: absolute;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 1px;
+  background: var(--black);
+  top: 50%;
+  transform-origin: left;
+  transition: 0.4s;
+}
+
+.iconArrow:after {
+  transform: translateY(-50%) rotate(40deg);
+}
+
+.iconArrow:before {
+  transform: translateY(-50%) rotate(-40deg);
+}
+
+.skFadingCircle {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--mainColor);
+}
+
+@-webkit-keyframes sk-circleFadeDelay {
+  0%, 39%, 100% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+}
+
+@keyframes sk-circleFadeDelay {
+  0%, 39%, 100% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+}
+
+.skFadingCircle .skCircle {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.skFadingCircle .skCircle:before {
+  content: "";
+  display: block;
+  margin: 0 auto;
+  width: 15%;
+  height: 15%;
+  background-color: currentColor;
+  border-radius: 100%;
+  -webkit-animation: sk-circleFadeDelay 1.2s infinite ease-in-out both;
+  animation: sk-circleFadeDelay 1.2s infinite ease-in-out both;
+}
+
+.skFadingCircle .skCircle:nth-child(1) {
+  transform: rotate(calc(30deg * 1));
+}
+
+.skFadingCircle .skCircle:nth-child(1):before {
+  animation-delay: calc(-1.2s + (0.1s * 1));
+}
+
+.skFadingCircle .skCircle:nth-child(2) {
+  transform: rotate(calc(30deg * 2));
+}
+
+.skFadingCircle .skCircle:nth-child(2):before {
+  animation-delay: calc(-1.2s + (0.1s * 2));
+}
+
+.skFadingCircle .skCircle:nth-child(3) {
+  transform: rotate(calc(30deg * 3));
+}
+
+.skFadingCircle .skCircle:nth-child(3):before {
+  animation-delay: calc(-1.2s + (0.1s * 3));
+}
+
+.skFadingCircle .skCircle:nth-child(4) {
+  transform: rotate(calc(30deg * 4));
+}
+
+.skFadingCircle .skCircle:nth-child(4):before {
+  animation-delay: calc(-1.2s + (0.1s * 4));
+}
+
+.skFadingCircle .skCircle:nth-child(5) {
+  transform: rotate(calc(30deg * 5));
+}
+
+.skFadingCircle .skCircle:nth-child(5):before {
+  animation-delay: calc(-1.2s + (0.1s * 5));
+}
+
+.skFadingCircle .skCircle:nth-child(6) {
+  transform: rotate(calc(30deg * 6));
+}
+
+.skFadingCircle .skCircle:nth-child(6):before {
+  animation-delay: calc(-1.2s + (0.1s * 6));
+}
+
+.skFadingCircle .skCircle:nth-child(7) {
+  transform: rotate(calc(30deg * 7));
+}
+
+.skFadingCircle .skCircle:nth-child(7):before {
+  animation-delay: calc(-1.2s + (0.1s * 7));
+}
+
+.skFadingCircle .skCircle:nth-child(8) {
+  transform: rotate(calc(30deg * 8));
+}
+
+.skFadingCircle .skCircle:nth-child(8):before {
+  animation-delay: calc(-1.2s + (0.1s * 8));
+}
+
+.skFadingCircle .skCircle:nth-child(9) {
+  transform: rotate(calc(30deg * 9));
+}
+
+.skFadingCircle .skCircle:nth-child(9):before {
+  animation-delay: calc(-1.2s + (0.1s * 9));
+}
+
+.skFadingCircle .skCircle:nth-child(10) {
+  transform: rotate(calc(30deg * 10));
+}
+
+.skFadingCircle .skCircle:nth-child(10):before {
+  animation-delay: calc(-1.2s + (0.1s * 10));
+}
+
+.skFadingCircle .skCircle:nth-child(11) {
+  transform: rotate(calc(30deg * 11));
+}
+
+.skFadingCircle .skCircle:nth-child(11):before {
+  animation-delay: calc(-1.2s + (0.1s * 11));
+}
+
+.skFadingCircle .skCircle:nth-child(12) {
+  transform: rotate(calc(30deg * 12));
+}
+
+.skFadingCircle .skCircle:nth-child(12):before {
+  animation-delay: calc(-1.2s + (0.1s * 12));
+}

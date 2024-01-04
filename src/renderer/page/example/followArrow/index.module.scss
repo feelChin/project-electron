@@ -1,0 +1,53 @@
+@import "@style/_util.scss";
+
+nav {
+  display: flex;
+  position: relative;
+}
+
+.nav1 {
+  i {
+    transition: 0.3s;
+  }
+}
+
+.nav2 {
+  i {
+    transition: 0.4s;
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+}
+
+.flex {
+  margin: 50px 0;
+  display: flex;
+  align-items: center;
+  * {
+    color: var(--black);
+  }
+  h5 {
+    width: 100px;
+  }
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  height: 30px;
+  padding: 0 1vw;
+
+  &:global(.active) {
+    color: var(--mainColor);
+    transition: 0.3s;
+  }
+}
+
+i {
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  background: var(--mainColor);
+  left: var(--x);
+  width: var(--w);
+}
