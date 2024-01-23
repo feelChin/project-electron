@@ -1,8 +1,8 @@
 export default class VisItemAni {
-  constructor({ content }) {
+  constructor(content) {
     const clientHeight = document.documentElement.clientHeight;
 
-    this.theScrollWrapper = document.querySelector(content) || window;
+    this.window = content ? document.querySelector(content) : window;
 
     const state = {
       clientHeight,
@@ -12,6 +12,7 @@ export default class VisItemAni {
         rootMargin: clientHeight + "px",
         threshold: 0,
       },
+      item: [],
     };
 
     for (let key in state) {
@@ -19,13 +20,17 @@ export default class VisItemAni {
     }
 
     this.init();
-    this.handleScroll = this.handleScroll.bind(this);
 
-    this.theScrollWrapper.addEventListener("resize", () => {
+    this.window.addEventListener("resize", () => {
       const newClientHeight = document.documentElement.clientHeight;
       this.clientHeight = newClientHeight;
       this.config.rootMargin = newClientHeight + "px";
     });
+
+    this.window.addEventListener(
+      "scroll",
+      this.throttle(this.handleScroll.bind(this), 10)
+    );
   }
 
   init() {
@@ -46,13 +51,8 @@ export default class VisItemAni {
         };
 
         if (entry.isIntersecting) {
-          const handleScroll = () => {
-            this.handleScroll(option);
-          };
-
-          this.theScrollWrapper.addEventListener("resize", handleScroll);
-          this.theScrollWrapper.addEventListener("scroll", handleScroll);
-          handleScroll();
+          this.item.push(option);
+          this.handleScroll();
         }
       });
     }, this.config);
@@ -62,8 +62,33 @@ export default class VisItemAni {
     });
   }
 
-  setValue(option) {
-    const { top, height, scrollTop, speed, clientHeight } = option;
+  throttle(fn, delay = 300, props) {
+    let lastTime = 0;
+    let timer = null;
+
+    let myThrottle = function () {
+      const args = [arguments, props];
+
+      const nowTime = Date.now();
+
+      if (nowTime - lastTime > delay) {
+        fn.apply(this, args);
+        lastTime = nowTime;
+      } else {
+        timer && clearTimeout(timer);
+
+        timer = setTimeout(() => {
+          fn.apply(this, args);
+          lastTime = nowTime;
+        }, delay);
+      }
+    };
+
+    return myThrottle;
+  }
+
+  setValue(el) {
+    const { top, height, scrollTop, speed, clientHeight } = el;
 
     if (height > clientHeight) {
       return Math.min(
@@ -81,14 +106,26 @@ export default class VisItemAni {
     }
   }
 
-  setScrolled(option) {
-    option.target.style.setProperty(`--scrolled`, `${this.setValue(option)}`);
+  setScrolled(el) {
+    const v = this.setValue(el);
+
+    el.target.style.setProperty(`--scrolled`, `${v}`);
+
+    if (v === 1) {
+      el.target.classList.add("active");
+    }
   }
 
-  handleScroll(option) {
-    option.top = option.target.getBoundingClientRect().top;
-    requestAnimationFrame(() => {
-      this.setScrolled(option);
+  handleScroll() {
+    if (!this.item.length) {
+      return;
+    }
+
+    this.item.forEach((el) => {
+      el.top = el.target.getBoundingClientRect().top;
+      requestAnimationFrame(() => {
+        this.setScrolled(el);
+      });
     });
   }
 }

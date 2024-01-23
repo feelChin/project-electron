@@ -34,10 +34,47 @@ function Index() {
     window.electron[type]();
   }
 
-  function handleTheme() {
-    setUserInfo({
-      ...userInfo,
-      theme: !userInfo.theme,
+  let isDark = "light";
+
+  function handleTheme(event) {
+    // setUserInfo({
+    //   ...userInfo,
+    //   theme: !userInfo.theme,
+    // });
+    const x = event[0].clientX;
+    const y = event[0].clientY;
+    const endRadius = Math.hypot(
+      Math.max(x, innerWidth - x),
+      Math.max(y, innerHeight - y)
+    );
+
+    let isDark;
+
+    // @ts-ignore
+    const transition = document.startViewTransition(() => {
+      const root = document.documentElement;
+      isDark = root.classList.contains("dark");
+      root.classList.remove(isDark ? "dark" : "light");
+      root.classList.add(isDark ? "light" : "dark");
+    });
+
+    transition.ready.then(() => {
+      const clipPath = [
+        `circle(0px at ${x}px ${y}px)`,
+        `circle(${endRadius}px at ${x}px ${y}px)`,
+      ];
+      document.documentElement.animate(
+        {
+          clipPath: isDark ? [...clipPath].reverse() : clipPath,
+        },
+        {
+          duration: 1000,
+          easing: "ease-in",
+          pseudoElement: isDark
+            ? "::view-transition-old(root)"
+            : "::view-transition-new(root)",
+        }
+      );
     });
   }
 

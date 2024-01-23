@@ -4,9 +4,7 @@ import style from "./index.module.scss";
 
 function Index() {
   useEffect(() => {
-    new VisItemAni({
-      content: "." + style.box,
-    });
+    new VisItemAni("." + style.box);
   }, []);
 
   return (
