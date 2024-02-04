@@ -5,19 +5,25 @@ function Index({
   children,
   height = "100%",
   onScroll,
-  barHeight = 20,
   beforeUpdate,
+  barHeight = 20,
   animation = {
     transition: "0.1s",
     transitionTimingFunction: "ease-in-out",
   },
   reload,
+  speed = 1,
+  showbar = false,
+  showbarDelay = 2000,
 }) {
   const myScrollRef = useRef(null); // 容器
   const childRef = useRef(null); // children容器
   const barRef = useRef(null); // scrollBar 容器
+  const timer = useRef(null);
+  const pointCache = useRef({});
 
   const wheelConfigRef = useRef({
+    speed, //滚动速度
     count: 0, // 滚动距离
     myScrollHeight: 0, // 容器高度
     childHeight: 0, // children容器高度
@@ -38,15 +44,14 @@ function Index({
 
     const threshold = myScrollHeight * (count / childHeight);
 
-    const result_point = Math.max(
-      (count / childHeight - barScrollPoint) * 100,
-      0
-    );
+    const result_point = Math.max((count / childHeight) * barScrollPoint, 0);
+
     const result_scroll = Math.max(count - threshold, 0);
     const result = {
       scrollTop: result_scroll,
       count: count,
       point: result_point,
+      progress: (count / childHeight) * 100,
     };
 
     beforeUpdate &&
@@ -61,12 +66,26 @@ function Index({
 
     barRef.current.style.setProperty("--scroll", result_point);
     childRef.current.style.transform = `translate3d(0,-${result_scroll}px,0)`;
+
+    if (!showbar) {
+      if (timer.current) {
+        clearTimeout(timer.current);
+      }
+
+      if (barRef.current.classList.contains("opacity")) {
+        barRef.current.classList.remove("opacity");
+      }
+
+      timer.current = setTimeout(() => {
+        barRef.current.classList.add("opacity");
+      }, showbarDelay);
+    }
   }
 
   function handleWheel(e) {
-    let { count, childHeight } = wheelConfigRef.current;
+    let { count, childHeight, speed } = wheelConfigRef.current;
 
-    count += e.deltaY;
+    count += e.deltaY * speed;
 
     if (count >= childHeight) {
       count = childHeight;
@@ -81,26 +100,31 @@ function Index({
     requestAnimationFrame(draw);
   }
 
-  function handlePointerDown() {
+  function handlePointerDown(e) {
     wheelConfigRef.current.drag = true;
+    myScrollRef.current.style.userSelect = "none";
+
+    const { count, childHeight } = wheelConfigRef.current;
+
+    pointCache.current.startPoint = e.clientY;
+    pointCache.current.startPointScroll = count / childHeight;
   }
 
   function handlePointerMove(e) {
     if (wheelConfigRef.current.drag) {
       barRef.current.style.transition = "0s";
 
-      const { myScrollHeight, childHeight } = wheelConfigRef.current;
+      const { myScrollHeight, barScrollPoint, childHeight } =
+        wheelConfigRef.current;
 
-      const { top } = barRef.current.parentNode.getBoundingClientRect();
+      const allScroll = (barScrollPoint * myScrollHeight) / 100;
 
-      const pageTop = e.clientY - top - barHeight;
+      const point =
+        (e.clientY - pointCache.current.startPoint) / allScroll +
+        pointCache.current.startPointScroll;
 
-      const drag_scrollPoint = Math.max(
-        Math.min(pageTop / myScrollHeight, 1),
-        0
-      );
-
-      wheelConfigRef.current.count = drag_scrollPoint * childHeight;
+      wheelConfigRef.current.count =
+        Math.min(Math.max(point, 0), 1) * childHeight;
 
       requestAnimationFrame(draw);
     }
@@ -109,8 +133,9 @@ function Index({
   function handlePointerUp() {
     if (wheelConfigRef.current.drag) {
       barRef.current.style.transition = ".1s";
+      myScrollRef.current.style.userSelect = "auto";
+      wheelConfigRef.current.drag = false;
     }
-    wheelConfigRef.current.drag = false;
   }
 
   useEffect(() => {
@@ -118,8 +143,18 @@ function Index({
       ...wheelConfigRef.current,
       myScrollHeight: myScrollRef.current.offsetHeight,
       childHeight: childRef.current.offsetHeight,
-      barScrollPoint: barHeight / myScrollRef.current.offsetHeight,
+      barScrollPoint:
+        100 - (barHeight / myScrollRef.current.offsetHeight) * 100,
     };
+
+    if (
+      wheelConfigRef.current.childHeight < wheelConfigRef.current.myScrollHeight
+    ) {
+      barRef.current.classList.add("none");
+    } else {
+      barRef.current.classList.contains("none") &&
+        barRef.current.classList.remove("none");
+    }
 
     document.body.addEventListener("pointermove", handlePointerMove);
     document.body.addEventListener("pointerup", handlePointerUp);

@@ -1,5 +1,17 @@
 @import "@style/_util.scss";
 
+.wrapper {
+  * {
+    color: var(--black);
+  }
+  button {
+    padding: 15px;
+    background: var(--white9);
+    color: var(--black);
+    cursor: pointer;
+  }
+}
+
 .render {
   position: relative;
   border: 1px solid var(--black9);

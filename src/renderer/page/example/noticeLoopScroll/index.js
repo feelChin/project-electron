@@ -20,7 +20,7 @@ function Index() {
   }, [params]);
 
   return (
-    <section>
+    <section className={style.wrapper}>
       <Row>
         方向：
         <Radio.Group

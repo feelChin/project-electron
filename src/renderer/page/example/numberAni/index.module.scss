@@ -9,6 +9,7 @@
   }
   .flex {
     display: flex;
+    color: var(--black);
   }
   .text {
     display: flex;
@@ -23,7 +24,7 @@
     width: 100px;
     height: 40px;
     background: var(--mainColor);
-    color: var(--white);
+    color: white;
     font-size: 14px;
     cursor: pointer;
   }
@@ -31,6 +32,7 @@
   :global(.num_ani) {
     display: inline-block;
     font-size: 18px;
+    color: var(--black);
     @keyframes ani {
       0% {
         transform: translate3d(0, 0, 0);

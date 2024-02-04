@@ -1,0 +1,31 @@
+._myScroll_dfphn_1 {
+  position: relative;
+  width: 100%;
+  display: inline-block;
+  overflow: hidden;
+  font-size: 14px;
+  padding: 0 30px;
+}
+._myScroll_dfphn_1 ._scrollBar_dfphn_9 {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 100%;
+}
+._myScroll_dfphn_1 ._scrollBar_dfphn_9 span {
+  position: absolute;
+  top: calc(var(--scroll) * 1%);
+  height: calc(var(--height) * 1px);
+  width: 100%;
+  border-radius: 6px;
+  background: var(--black);
+  transition: 0.4s;
+}
+._myScroll_dfphn_1 ._scrollBar_dfphn_9 span.none {
+  display: none;
+}
+._myScroll_dfphn_1 ._scrollBar_dfphn_9 span.opacity {
+  opacity: 0;
+}

@@ -75,6 +75,7 @@ function Index({ result, height = 50, row: Row, handleScroll }) {
         animation={{
           transition: "0s",
         }}
+        barHeight={100}
         showbar={false}
         reload={reloadUpdate}
       >

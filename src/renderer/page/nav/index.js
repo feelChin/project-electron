@@ -1,27 +1,44 @@
 import React from "react";
 import routes from "@router/router";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import User from "@component/user";
 import useContext from "@util/useRootContext/useContext";
 import useDebounce from "@hook/useDebounce";
 import style from "./index.module.scss";
 
 function Index() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const { userInfo, setUserInfo } = useContext();
 
   const debounceHandleTheme = useDebounce(handleTheme, 500, true);
 
+  function startViewTransition(callback) {
+    if (!document.startViewTransition) {
+      callback();
+      return;
+    }
+
+    document.startViewTransition(callback);
+  }
+
   function renderNav() {
     return routes[0].children.map(({ name, path }) => (
-      <NavLink
+      <div
+        className={`${style.item} ${
+          location.pathname == path ? style.active : ""
+        }`}
         key={path}
-        to={path}
-        className={({ isActive }) =>
-          isActive ? `${style.item} ${style.active}` : `${style.item}`
-        }
+        onClick={(e) => {
+          e.target.classList.add(style.active);
+          startViewTransition(() => {
+            navigate(path);
+          });
+        }}
       >
         {name}
-      </NavLink>
+      </div>
     ));
   }
 
@@ -34,13 +51,7 @@ function Index() {
     window.electron[type]();
   }
 
-  let isDark = "light";
-
   function handleTheme(event) {
-    // setUserInfo({
-    //   ...userInfo,
-    //   theme: !userInfo.theme,
-    // });
     const x = event[0].clientX;
     const y = event[0].clientY;
     const endRadius = Math.hypot(
@@ -48,14 +59,13 @@ function Index() {
       Math.max(y, innerHeight - y)
     );
 
-    let isDark;
+    const isDark = !userInfo.theme;
 
-    // @ts-ignore
     const transition = document.startViewTransition(() => {
-      const root = document.documentElement;
-      isDark = root.classList.contains("dark");
-      root.classList.remove(isDark ? "dark" : "light");
-      root.classList.add(isDark ? "light" : "dark");
+      setUserInfo({
+        ...userInfo,
+        theme: isDark,
+      });
     });
 
     transition.ready.then(() => {
@@ -69,7 +79,7 @@ function Index() {
         },
         {
           duration: 1000,
-          easing: "ease-in",
+          easing: "ease-in-out",
           pseudoElement: isDark
             ? "::view-transition-old(root)"
             : "::view-transition-new(root)",

@@ -6,6 +6,7 @@ export const MyScroll = class MyCustomScroll {
     beforeUpdate = () => {},
     showbar = true,
     showbarDelay = 2000,
+    speed = 1,
   }) {
     this.root = document.querySelector(element);
     this.barHeight = barHeight;
@@ -15,11 +16,12 @@ export const MyScroll = class MyCustomScroll {
     this.onScroll = (value) => {
       onScroll(value);
     };
-    this.beforeUpdate = (value, cb) => {
-      beforeUpdate(value, cb);
+    this.beforeUpdate = (value) => {
+      beforeUpdate(value);
     };
 
     this.wheelConfig = {
+      speed, //滚动速度
       count: 0, // 滚动距离
       myScrollHeight: this.root.parentNode.offsetHeight, // 容器高度
       childHeight: this.root.offsetHeight, // children容器高度
@@ -127,7 +129,7 @@ export const MyScroll = class MyCustomScroll {
       this.wheelConfig;
 
     if (childHeight < myScrollHeight) {
-      this.el.classList.add("none");
+      !this.el.classList.contains("none") && this.el.classList.add("none");
     } else {
       this.el.classList.contains("none") && this.el.classList.remove("none");
     }
@@ -146,9 +148,8 @@ export const MyScroll = class MyCustomScroll {
 
     this.beforeUpdate &&
       (await new Promise((resolve) => {
-        this.beforeUpdate(result, () => {
-          resolve();
-        });
+        this.beforeUpdate(result);
+        resolve();
       }));
 
     this.onScroll && this.onScroll(result);
@@ -172,9 +173,11 @@ export const MyScroll = class MyCustomScroll {
   }
 
   handleWheel(e) {
-    let { count, childHeight } = this.wheelConfig;
+    let { count, childHeight, speed } = this.wheelConfig;
 
-    count += e.deltaY;
+    if (this.root.classList.contains("none")) return;
+
+    count += e.deltaY * speed;
 
     if (count >= childHeight) {
       count = childHeight;
@@ -187,6 +190,8 @@ export const MyScroll = class MyCustomScroll {
     this.wheelConfig.count = count;
 
     requestAnimationFrame(this.draw.bind(this));
+
+    e.preventDefault();
   }
 
   handlePointerDown(e) {
@@ -217,8 +222,7 @@ export const MyScroll = class MyCustomScroll {
 
   handlePointerUp() {
     if (this.wheelConfig.drag) {
-      this.el_bar.style.transition = ".4s";
-
+      this.el_bar.style.transition = ".1s";
       this.root.style.userSelect = "auto";
       this.wheelConfig.drag = false;
     }
@@ -237,13 +241,12 @@ export default class MyVirtualList {
     result = [],
     height = 50,
     barHeight,
-    handScroll,
+    handScroll = () => {},
     showbar,
     showbarDelay,
     render = () => {},
   }) {
     this.root = document.querySelector(element);
-
     this.result = result;
     this.height = height;
     this.barHeight = barHeight;
@@ -274,8 +277,8 @@ export default class MyVirtualList {
     this.renderList(0, this.getEndIndex(0));
   }
 
-  update(arr) {
-    this.result = arr;
+  update(arr, isReload = false) {
+    this.result = [...arr];
 
     this.config = {
       top: arr.map((_, index) => {
@@ -288,6 +291,10 @@ export default class MyVirtualList {
     this.el_div.style.height = this.config.total_height + "px";
 
     this.myCustomScroll.update();
+
+    if (isReload) {
+      this.renderList(0, this.getEndIndex(0));
+    }
   }
 
   // 防抖函数
@@ -341,7 +348,7 @@ export default class MyVirtualList {
       barHeight: this.barHeight,
       showbar: this.showbar,
       showbarDelay: this.showbarDelay,
-      beforeUpdate: (v, cb) => {
+      beforeUpdate: (v) => {
         const { scrollTop } = v;
 
         if (this.prevScrollTop === scrollTop) return;
@@ -353,8 +360,6 @@ export default class MyVirtualList {
         this.prevScrollTop = scrollTop;
 
         this.handScroll(v);
-
-        cb && cb();
       },
     });
   }

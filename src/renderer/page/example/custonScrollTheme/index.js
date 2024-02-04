@@ -6,10 +6,11 @@ function Index() {
     <div
       style={{
         width: "80%",
+        fontSize: 0,
         background: "var(--white6)",
       }}
     >
-      <CustonScrollTheme height={160} barHeight={20}>
+      <CustonScrollTheme height={160} barHeight={50}>
         <div
           style={{
             lineHeight: 6,

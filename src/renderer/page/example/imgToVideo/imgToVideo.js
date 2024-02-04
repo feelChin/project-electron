@@ -52,14 +52,14 @@ export default class ImgToVideo {
 
     const { top } = this.element.getBoundingClientRect();
     // 根据滚动距离，等比例算出应该滚动到第几张图
-    this.scrollIndex = Math.round((-top * 42) / (scrollHeight - clientHeight));
+    this.scrollIndex = Math.round((-top * 18) / (scrollHeight - clientHeight));
     this.scrolled = Math.min(
       Math.max(-top / (scrollHeight - clientHeight), 0),
       1
     );
 
-    if (this.scrollIndex >= 42) {
-      this.scrollIndex = 42;
+    if (this.scrollIndex >= 18) {
+      this.scrollIndex = 18;
     }
 
     if (this.scrollIndex <= 0) {

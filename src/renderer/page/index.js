@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { useOutlet, useLocation } from "react-router-dom";
+import { useOutlet, useLocation, Outlet } from "react-router-dom";
 import { useTransition, animated } from "@react-spring/web";
 import { mainRouter } from "@router/router";
 import Nav from "./nav";
@@ -47,8 +47,8 @@ function Index() {
   return (
     <>
       <Nav />
-      <div className={style.wrapper}>
-        <div className={style.item}>
+      <div className={`${style.wrapper} main`}>
+        {/* <div className={style.item}>
           {Object.keys(map.current).length > 1 ? (
             <>
               {transitions((style, pathname) => (
@@ -60,7 +60,8 @@ function Index() {
           ) : (
             <>{map.current[location.pathname]}</>
           )}
-        </div>
+        </div> */}
+        <Outlet />
       </div>
     </>
   );

@@ -8,10 +8,10 @@ class MyPageEffect extends PageEffect {
     super(param);
 
     this.routerMap = {
-      home: this.homePage(),
-      learn: this.learnPage(),
-      list: this.listPage(),
-      me: this.minePage(),
+      home: this.homePage,
+      learn: this.learnPage,
+      list: this.listPage,
+      me: this.minePage,
     };
   }
 
@@ -52,7 +52,7 @@ function Index() {
   }, [state]);
 
   return (
-    <section>
+    <section className={style.wrapper}>
       <Row>
         方向：
         <Radio.Group
@@ -68,7 +68,7 @@ function Index() {
         </Radio.Group>
       </Row>
       <div style={{ height: 30 }}></div>
-      <p>外部是哈希路由 内部更改哈希会改变全局</p>
+      <p>全局是哈希路由 内部更改哈希会改变全局</p>
       <div style={{ height: 30 }}></div>
       <button
         onClick={() => {

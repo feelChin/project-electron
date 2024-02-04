@@ -7,7 +7,7 @@ function Index() {
   function LazyElement({ importFunc }) {
     const LazyComponent = lazy(importFunc);
     return (
-      <Suspense fallback="渲染中">
+      <Suspense fallback="">
         <LazyComponent />
       </Suspense>
     );

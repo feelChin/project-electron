@@ -13,12 +13,19 @@
       width: 100%;
       height: 100%;
       overflow: hidden;
+      color: var(--black);
+      :global(.scrollBar) {
+        span {
+          background: var(--black) !important;
+        }
+      }
       :global(.item) {
         display: flex;
         align-items: center;
         padding: 0 15px;
+        background: var(--white3);
         &:nth-child(even) {
-          background: #f9f9f9;
+          background: var(--white9);
         }
       }
       :global(.myScroll) {

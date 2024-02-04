@@ -35,30 +35,20 @@
   mix-blend-mode: normal;
 }
 
-/* 进入dark模式和退出dark模式时，两个图像的位置顺序正好相反 */
-.dark::view-transition-old(root) {
-  z-index: 1;
-}
-.dark::view-transition-new(root) {
+[data-theme="light"]::view-transition-old(root) {
   z-index: 999;
 }
 
-.dark {
-  --black: white;
-  --black3: #f3f3f3;
-  --black6: #f6f6f6;
-  --black9: #f9f9f9;
-  --white: black;
-  --white3: #333;
-  --white6: #666;
-  --white9: #999;
+[data-theme="light"]::view-transition-new(root) {
+  z-index: 1;
 }
 
-::view-transition-old(root) {
-  z-index: 999;
-}
-::view-transition-new(root) {
+[data-theme="dark"]::view-transition-old(root) {
   z-index: 1;
+}
+
+[data-theme="dark"]::view-transition-new(root) {
+  z-index: 999;
 }
 
 body {

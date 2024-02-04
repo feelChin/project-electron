@@ -35,6 +35,12 @@
           height: 100%;
         }
       }
+      // &:hover {
+      //   color: white;
+      //   &:after {
+      //     height: 100%;
+      //   }
+      // }
       &:after {
         content: "";
         @include absolute;

@@ -23,6 +23,7 @@ export default class Route {
     };
 
     this.pool = [];
+    this.poolRoute = {};
   }
 
   proxy() {
@@ -56,8 +57,6 @@ export default class Route {
         return proxy;
       },
     });
-
-    console.log(this);
   }
 
   init() {
@@ -96,9 +95,16 @@ export default class Route {
         ? defaultKey
         : hashName;
 
-    let components = this.routerMap[name];
+    if (!this.poolRoute[name]) {
+      this.poolRoute[name] = this.routerMap[name]();
+    }
+
+    let components = this.poolRoute[name] || this.page404();
 
     this.pool.push(name);
+    if (this.pool.length > 3) {
+      this.pool.shift();
+    }
 
     // 404
     if (!components) {
