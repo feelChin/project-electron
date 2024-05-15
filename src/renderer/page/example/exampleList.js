@@ -41,4 +41,5 @@ export default {
 	customRoute: lazy(() => import("./customRoute")),
 	promiseLimit: lazy(() => import("./promiseLimit")),
 	numberAni: lazy(() => import("./numberAni")),
+	clipImg: lazy(() => import("./clipImg")),
 };

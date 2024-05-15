@@ -3,6 +3,12 @@
 	"data": [
 		{
 			"type": "vanilla",
+			"name": "图片裁剪下载",
+			"text": "可实现对图片进行裁剪 裁剪图片完可下载",
+			"url": "clipImg"
+		},
+		{
+			"type": "vanilla",
 			"name": "数字滚动动画",
 			"text": "数字更改时 滚动变化动画",
 			"url": "numberAni"
@@ -163,7 +169,6 @@
 			"text": "使用transform 模拟页面滚动,产生缓动过渡滚动",
 			"url": "scrollPageTransfrom"
 		},
-
 		{
 			"type": "vanilla",
 			"name": "页面横向缓动滚动",

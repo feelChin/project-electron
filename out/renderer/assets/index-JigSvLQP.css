@@ -1,0 +1,32 @@
+._box_1tuaf_1 {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow-y: auto;
+}
+._box_1tuaf_1::-webkit-scrollbar {
+  display: none;
+}
+._box_1tuaf_1 ._itemWrapper_1tuaf_10 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  transform: translate3d(0, 0, 0);
+  transition: 0.1s;
+  pointer-events: none;
+}
+._box_1tuaf_1 ._item_1tuaf_10 {
+  flex-shrink: 0;
+  width: 80vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20vw 10vw;
+  box-sizing: border-box;
+  font-size: 13px;
+  line-height: 2;
+  color: var(--black);
+}

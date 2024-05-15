@@ -5,19 +5,22 @@
   width: 100%;
   height: 100%;
   background: var(--white6);
+
   .exampleList {
     width: 100%;
     height: calc(100% - 20px);
     padding: 20px;
     overflow-y: auto;
     overflow-x: hidden;
+
     .exampleListWrapper {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: repeat(9, 110px);
+      grid-template-rows: repeat(10, 110px);
       gap: 24px;
       padding-top: 2px;
     }
+
     .item {
       cursor: pointer;
       position: relative;
@@ -30,13 +33,16 @@
       margin-bottom: 20px;
       box-shadow: 0 0 3px var(--mainColor);
       transition: color 0.4s;
+
       &:hover {
         color: white;
+
         &:after {
           width: 260%;
           height: 310%;
         }
       }
+
       &:after {
         content: "";
         position: absolute;
@@ -50,15 +56,18 @@
         transform: translate(-50%, 50%);
         transition: 0.4s;
       }
+
       .title {
         position: absolute;
         top: 15px;
         left: 15px;
         right: 15px;
         @include flexBetween;
+
         h5 {
           font-weight: 700;
         }
+
         span {
           padding: 0 6px;
           height: 18px;
@@ -84,11 +93,13 @@
     @include absolute;
     z-index: 9;
     background: #000;
+
     .exampleModalWrapper {
       @include absolute;
       background: var(--white);
       display: flex;
       flex-direction: column;
+
       .title {
         position: relative;
         height: 50px;
@@ -97,11 +108,13 @@
         padding: 0 20px;
         z-index: 9;
         background: var(--white);
+
         h5 {
           margin-left: 10px;
           color: var(--black);
         }
       }
+
       .content {
         flex: 1;
         @include flex;
