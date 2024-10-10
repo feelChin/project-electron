@@ -4,20 +4,20 @@ import exampleList from "../../example.json";
 export const RootContext = React.createContext(null);
 
 export const RootProvider = ({ children }) => {
-  const [userInfo, setUserInfo] = useState({
-    token: JSON.parse(sessionStorage.getItem("token")),
-    example: exampleList,
-    theme: true,
-  });
+	const [userInfo, setUserInfo] = useState({
+		token: JSON.parse(sessionStorage.getItem("token")),
+		example: exampleList,
+		theme: localStorage.getItem("theme") === "light" ? true : false,
+	});
 
-  useEffect(() => {
-    document.documentElement.setAttribute(
-      "data-theme",
-      userInfo.theme ? "light" : "dark"
-    );
-  }, [userInfo.theme]);
+	useEffect(() => {
+		const myTheme = userInfo.theme ? "light" : "dark";
 
-  const value = { userInfo, setUserInfo };
+		document.documentElement.setAttribute("data-theme", myTheme);
+		localStorage.setItem("theme", myTheme);
+	}, [userInfo.theme]);
 
-  return <RootContext.Provider value={value}>{children}</RootContext.Provider>;
+	const value = { userInfo, setUserInfo };
+
+	return <RootContext.Provider value={value}>{children}</RootContext.Provider>;
 };

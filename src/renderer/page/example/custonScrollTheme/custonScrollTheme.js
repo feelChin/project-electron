@@ -1,192 +1,206 @@
-import React, { useRef, cloneElement, useEffect } from "react";
+import React, { useRef, cloneElement, useEffect, useState } from "react";
 import style from "./index.module.scss";
 
 function Index({
-  children,
-  height = "100%",
-  onScroll,
-  beforeUpdate,
-  barHeight = 20,
-  animation = {
-    transition: "0.1s",
-    transitionTimingFunction: "ease-in-out",
-  },
-  reload,
-  speed = 1,
-  showbar = false,
-  showbarDelay = 2000,
+	children,
+	height = "100%",
+	onScroll,
+	beforeUpdate,
+	barHeight = 20,
+	animation = {
+		transition: "0.1s",
+		transitionTimingFunction: "ease-in-out",
+	},
+	reload,
+	speed = 1,
+	showbar = false,
+	showbarDelay = 2000,
 }) {
-  const myScrollRef = useRef(null); // 容器
-  const childRef = useRef(null); // children容器
-  const barRef = useRef(null); // scrollBar 容器
-  const timer = useRef(null);
-  const pointCache = useRef({});
+	const myScrollRef = useRef(null); // 容器
+	const childRef = useRef(null); // children容器
+	const barRef = useRef(null); // scrollBar 容器
+	const timer = useRef(null);
+	const pointCache = useRef({});
 
-  const wheelConfigRef = useRef({
-    speed, //滚动速度
-    count: 0, // 滚动距离
-    myScrollHeight: 0, // 容器高度
-    childHeight: 0, // children容器高度
-    drag: false, // 是否拖拽
-  });
+	const wheelConfigRef = useRef({
+		speed, //滚动速度
+		count: 0, // 滚动距离
+		myScrollHeight: 0, // 容器高度
+		childHeight: 0, // children容器高度
+		drag: false, // 是否拖拽
+	});
 
-  const clonedChildren = cloneElement(children, {
-    ref: childRef,
-    style: {
-      ...children.props.style,
-      ...animation,
-    },
-  });
+	const [isshowBar, setIsshowBar] = useState(true);
 
-  async function draw() {
-    const { count, myScrollHeight, childHeight, barScrollPoint } =
-      wheelConfigRef.current;
+	const clonedChildren = cloneElement(children, {
+		ref: childRef,
+		style: {
+			...children.props.style,
+			...animation,
+		},
+	});
 
-    const threshold = myScrollHeight * (count / childHeight);
+	async function draw() {
+		const { count, myScrollHeight, childHeight, barScrollPoint } =
+			wheelConfigRef.current;
 
-    const result_point = Math.max((count / childHeight) * barScrollPoint, 0);
+		if (childHeight < myScrollHeight) {
+			setIsshowBar(false);
+			return;
+		}
 
-    const result_scroll = Math.max(count - threshold, 0);
-    const result = {
-      scrollTop: result_scroll,
-      count: count,
-      point: result_point,
-      progress: (count / childHeight) * 100,
-    };
+		const threshold = myScrollHeight * (count / childHeight);
 
-    beforeUpdate &&
-      (await new Promise((resolve) => {
-        beforeUpdate(result);
-        setTimeout(() => {
-          resolve();
-        }, 0);
-      }));
+		const result_point = Math.max((count / childHeight) * barScrollPoint, 0);
 
-    onScroll && onScroll(result);
+		const result_scroll = Math.max(count - threshold, 0);
+		const result = {
+			scrollTop: result_scroll,
+			count: count,
+			point: result_point,
+			progress: (count / childHeight) * 100,
+		};
 
-    barRef.current.style.setProperty("--scroll", result_point);
-    childRef.current.style.transform = `translate3d(0,-${result_scroll}px,0)`;
+		beforeUpdate &&
+			(await new Promise((resolve) => {
+				beforeUpdate(result);
+				requestAnimationFrame(() => {
+					resolve();
+				});
+			}));
 
-    if (!showbar) {
-      if (timer.current) {
-        clearTimeout(timer.current);
-      }
+		onScroll && onScroll(result);
 
-      if (barRef.current.classList.contains("opacity")) {
-        barRef.current.classList.remove("opacity");
-      }
+		barRef.current.style.setProperty("--scroll", result_point);
+		childRef.current.style.transform = `translate3d(0,-${result_scroll}px,0)`;
 
-      timer.current = setTimeout(() => {
-        barRef.current.classList.add("opacity");
-      }, showbarDelay);
-    }
-  }
+		if (!showbar) {
+			if (timer.current) {
+				clearTimeout(timer.current);
+			}
 
-  function handleWheel(e) {
-    let { count, childHeight, speed } = wheelConfigRef.current;
+			if (barRef.current.classList.contains("opacity")) {
+				barRef.current.classList.remove("opacity");
+			}
 
-    count += e.deltaY * speed;
+			timer.current = setTimeout(() => {
+				barRef.current?.classList.add("opacity");
+			}, showbarDelay);
+		}
+	}
 
-    if (count >= childHeight) {
-      count = childHeight;
-    }
+	function handleWheel(e) {
+		let { count, childHeight, speed } = wheelConfigRef.current;
 
-    if (count <= 0) {
-      count = 0;
-    }
+		count += e.deltaY * speed;
 
-    wheelConfigRef.current.count = count;
+		if (count >= childHeight) {
+			count = childHeight;
+		}
 
-    requestAnimationFrame(draw);
-  }
+		if (count <= 0) {
+			count = 0;
+		}
 
-  function handlePointerDown(e) {
-    wheelConfigRef.current.drag = true;
-    myScrollRef.current.style.userSelect = "none";
+		wheelConfigRef.current.count = count;
 
-    const { count, childHeight } = wheelConfigRef.current;
+		requestAnimationFrame(draw);
+	}
 
-    pointCache.current.startPoint = e.clientY;
-    pointCache.current.startPointScroll = count / childHeight;
-  }
+	function handlePointerDown(e) {
+		wheelConfigRef.current.drag = true;
+		myScrollRef.current.style.userSelect = "none";
 
-  function handlePointerMove(e) {
-    if (wheelConfigRef.current.drag) {
-      barRef.current.style.transition = "0s";
+		const { count, childHeight } = wheelConfigRef.current;
 
-      const { myScrollHeight, barScrollPoint, childHeight } =
-        wheelConfigRef.current;
+		pointCache.current.startPoint = e.clientY;
+		pointCache.current.startPointScroll = count / childHeight;
+	}
 
-      const allScroll = (barScrollPoint * myScrollHeight) / 100;
+	function handlePointerMove(e) {
+		if (wheelConfigRef.current.drag) {
+			barRef.current.style.transition = "0s";
 
-      const point =
-        (e.clientY - pointCache.current.startPoint) / allScroll +
-        pointCache.current.startPointScroll;
+			const { myScrollHeight, barScrollPoint, childHeight } =
+				wheelConfigRef.current;
 
-      wheelConfigRef.current.count =
-        Math.min(Math.max(point, 0), 1) * childHeight;
+			const allScroll = (barScrollPoint * myScrollHeight) / 100;
 
-      requestAnimationFrame(draw);
-    }
-  }
+			const point =
+				(e.clientY - pointCache.current.startPoint) / allScroll +
+				pointCache.current.startPointScroll;
 
-  function handlePointerUp() {
-    if (wheelConfigRef.current.drag) {
-      barRef.current.style.transition = ".1s";
-      myScrollRef.current.style.userSelect = "auto";
-      wheelConfigRef.current.drag = false;
-    }
-  }
+			wheelConfigRef.current.count =
+				Math.min(Math.max(point, 0), 1) * childHeight;
 
-  useEffect(() => {
-    wheelConfigRef.current = {
-      ...wheelConfigRef.current,
-      myScrollHeight: myScrollRef.current.offsetHeight,
-      childHeight: childRef.current.offsetHeight,
-      barScrollPoint:
-        100 - (barHeight / myScrollRef.current.offsetHeight) * 100,
-    };
+			requestAnimationFrame(draw);
+		}
+	}
 
-    if (
-      wheelConfigRef.current.childHeight < wheelConfigRef.current.myScrollHeight
-    ) {
-      barRef.current.classList.add("none");
-    } else {
-      barRef.current.classList.contains("none") &&
-        barRef.current.classList.remove("none");
-    }
+	function handlePointerUp() {
+		if (wheelConfigRef.current.drag) {
+			barRef.current.style.transition = ".1s";
+			myScrollRef.current.style.userSelect = "auto";
+			wheelConfigRef.current.drag = false;
+		}
+	}
 
-    document.body.addEventListener("pointermove", handlePointerMove);
-    document.body.addEventListener("pointerup", handlePointerUp);
+	useEffect(() => {
+		wheelConfigRef.current = {
+			...wheelConfigRef.current,
+			myScrollHeight: myScrollRef.current.offsetHeight,
+			childHeight: childRef.current.offsetHeight,
+			barScrollPoint:
+				100 - (barHeight / myScrollRef.current.offsetHeight) * 100,
+		};
 
-    return () => {
-      document.body.removeEventListener("pointermove", handlePointerMove);
-      document.body.removeEventListener("pointerup", handlePointerUp);
-    };
-  }, [reload]);
+		if (
+			wheelConfigRef.current.childHeight < wheelConfigRef.current.myScrollHeight
+		) {
+			barRef.current.classList.add("none");
+		} else {
+			barRef.current.classList.contains("none") &&
+				barRef.current.classList.remove("none");
+		}
 
-  return (
-    <div
-      className={style.myScroll}
-      ref={myScrollRef}
-      style={{
-        height,
-      }}
-      onWheel={handleWheel}
-    >
-      {clonedChildren}
-      <div className={style.scrollBar}>
-        <span
-          ref={barRef}
-          style={{
-            "--scroll": 0,
-            "--height": barHeight,
-          }}
-          onPointerDown={handlePointerDown}
-        ></span>
-      </div>
-    </div>
-  );
+		document.body.addEventListener("pointermove", handlePointerMove);
+		document.body.addEventListener("pointerup", handlePointerUp);
+
+		return () => {
+			clearTimeout(timer.current);
+			document.body.removeEventListener("pointermove", handlePointerMove);
+			document.body.removeEventListener("pointerup", handlePointerUp);
+		};
+	}, [reload]);
+
+	return (
+		<div
+			className={style.myScroll}
+			ref={myScrollRef}
+			style={{
+				height,
+			}}
+			onWheel={handleWheel}
+		>
+			{clonedChildren}
+			{isshowBar ? (
+				<>
+					<div className={`${style.scrollBar} scrollBar`}>
+						<span
+							ref={barRef}
+							style={{
+								"--scroll": 0,
+								"--height": barHeight,
+							}}
+							onPointerDown={handlePointerDown}
+						></span>
+					</div>
+				</>
+			) : (
+				""
+			)}
+		</div>
+	);
 }
 
 export default React.memo(Index);

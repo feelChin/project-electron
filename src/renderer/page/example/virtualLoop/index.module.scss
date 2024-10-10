@@ -4,32 +4,44 @@
   width: 100%;
   height: 100%;
   @include flex;
+
   .wrapper {
     position: relative;
     height: 300px;
     width: 300px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
     .virtualLoop {
       width: 100%;
       height: 100%;
       overflow: hidden;
       color: var(--black);
+
       :global(.scrollBar) {
         span {
-          background: var(--black) !important;
+          transition: .4s;
+          background: var(--black);
+
+          &:global(.drag) {
+            background: var(--mainColor);
+          }
         }
       }
+
       :global(.item) {
         display: flex;
         align-items: center;
         padding: 0 15px;
         background: var(--white3);
+
         &:nth-child(even) {
           background: var(--white9);
         }
       }
+
       :global(.myScroll) {
         transition: 0s;
+
       }
     }
   }

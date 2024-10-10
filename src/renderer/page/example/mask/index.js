@@ -24,6 +24,11 @@ function Index() {
 				<div className={style.menu}></div>
 				<p>按钮4</p>
 			</div>
+			<div className={style.item}>
+				<div className={style.menu}></div>
+				<div className={style.menu}></div>
+				<p>按钮5</p>
+			</div>
 		</div>
 	);
 }

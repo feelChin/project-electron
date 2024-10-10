@@ -1,0 +1,170 @@
+._pageFixed_gtnuw_1 {
+  position: absolute;
+  right: 5%;
+  top: 13%;
+  background: var(--white);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  padding: 5px 10px;
+  font-size: 12px;
+  border-radius: 5px;
+  color: var(--black);
+}
+._pageFixed_gtnuw_1 ._navItem_gtnuw_14 {
+  cursor: pointer;
+}
+._pageFixed_gtnuw_1 ._navItem_gtnuw_14.active {
+  color: red;
+}
+._pageFixed_gtnuw_1 ._navItem_gtnuw_14 ._head_gtnuw_20 {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  height: 18px;
+}
+._page_gtnuw_1 {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+._page_gtnuw_1 ._pageItem_gtnuw_32 {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 33px;
+}
+._page_gtnuw_1 ._pageItem_gtnuw_32:nth-child(1) {
+  height: 142vh;
+  background: rgb(246, 82, 248);
+}
+._page_gtnuw_1 ._pageItem_gtnuw_32:nth-child(2) {
+  height: 103vh;
+  background: rgb(122, 178, 97);
+}
+._page_gtnuw_1 ._pageItem_gtnuw_32:nth-child(3) {
+  height: 68vh;
+  background: rgb(184, 231, 225);
+}
+._page_gtnuw_1 ._pageItem_gtnuw_32:nth-child(4) {
+  height: 77vh;
+  background: rgb(201, 124, 188);
+}
+._page_gtnuw_1 ._pageItem_gtnuw_32:nth-child(5) {
+  height: 87vh;
+  background: rgb(135, 60, 119);
+}
+._page_gtnuw_1 ._pageItem_gtnuw_32:nth-child(6) {
+  height: 99vh;
+  background: rgb(176, 145, 158);
+}
+._page_gtnuw_1 ._pageItem_gtnuw_32:nth-child(7) {
+  height: 80vh;
+  background: rgb(204, 60, 74);
+}
+._page_gtnuw_1 ._pageItem_gtnuw_32:nth-child(8) {
+  height: 87vh;
+  background: rgb(178, 230, 9);
+}
+._page_gtnuw_1 ._pageItem_gtnuw_32:nth-child(9) {
+  height: 145vh;
+  background: rgb(114, 131, 200);
+}
+._page_gtnuw_1 ._pageItem_gtnuw_32:nth-child(10) {
+  height: 129vh;
+  background: rgb(25, 112, 89);
+}
+._page_gtnuw_1 ._pageItem_gtnuw_32:nth-child(11) {
+  height: 62vh;
+  background: rgb(128, 103, 127);
+}
+._page_gtnuw_1 ._pageItem_gtnuw_32:nth-child(12) {
+  height: 90vh;
+  background: rgb(48, 86, 109);
+}
+._page_gtnuw_1 ._pageItem_gtnuw_32:nth-child(13) {
+  height: 121vh;
+  background: rgb(142, 130, 78);
+}
+._page_gtnuw_1 ._pageItem_gtnuw_32:nth-child(14) {
+  height: 97vh;
+  background: rgb(241, 115, 183);
+}
+._page_gtnuw_1 ._pageItem_gtnuw_32:nth-child(15) {
+  height: 72vh;
+  background: rgb(128, 21, 80);
+}
+._page_gtnuw_1 ._pageItem_gtnuw_32:nth-child(16) {
+  height: 72vh;
+  background: rgb(74, 137, 68);
+}
+._page_gtnuw_1 ._pageItem_gtnuw_32:nth-child(17) {
+  height: 62vh;
+  background: rgb(118, 24, 158);
+}
+._page_gtnuw_1 ._pageItem_gtnuw_32:nth-child(18) {
+  height: 63vh;
+  background: rgb(67, 113, 36);
+}
+._page_gtnuw_1 ._pageItem_gtnuw_32:nth-child(19) {
+  height: 147vh;
+  background: rgb(62, 51, 55);
+}
+._page_gtnuw_1 ._pageItem_gtnuw_32:nth-child(20) {
+  height: 68vh;
+  background: rgb(52, 181, 78);
+}
+._page_gtnuw_1 ._pageItem_gtnuw_32:nth-child(21) {
+  height: 154vh;
+  background: rgb(237, 8, 130);
+}
+._page_gtnuw_1 ._pageItem_gtnuw_32:nth-child(22) {
+  height: 146vh;
+  background: rgb(204, 168, 56);
+}
+._page_gtnuw_1 ._pageItem_gtnuw_32:nth-child(23) {
+  height: 97vh;
+  background: rgb(85, 135, 230);
+}
+._page_gtnuw_1 ._pageItem_gtnuw_32:nth-child(24) {
+  height: 122vh;
+  background: rgb(5, 177, 153);
+}
+._page_gtnuw_1 ._pageItem_gtnuw_32:nth-child(25) {
+  height: 114vh;
+  background: rgb(251, 247, 147);
+}
+._page_gtnuw_1 ._pageItem_gtnuw_32:nth-child(26) {
+  height: 92vh;
+  background: rgb(96, 19, 191);
+}
+._page_gtnuw_1 ._pageItem_gtnuw_32:nth-child(27) {
+  height: 138vh;
+  background: rgb(188, 115, 2);
+}
+._page_gtnuw_1 ._pageItem_gtnuw_32:nth-child(28) {
+  height: 153vh;
+  background: rgb(155, 107, 225);
+}
+._page_gtnuw_1 ._pageItem_gtnuw_32:nth-child(29) {
+  height: 78vh;
+  background: rgb(18, 7, 193);
+}
+._page_gtnuw_1 ._pageItem_gtnuw_32:nth-child(30) {
+  height: 77vh;
+  background: rgb(181, 214, 64);
+}
+._page_gtnuw_1 ._pageItem_gtnuw_32:nth-child(31) {
+  height: 90vh;
+  background: rgb(189, 255, 236);
+}
+._page_gtnuw_1 ._pageItem_gtnuw_32:nth-child(32) {
+  height: 143vh;
+  background: rgb(224, 250, 183);
+}
+._page_gtnuw_1 ._pageItem_gtnuw_32:nth-child(33) {
+  height: 151vh;
+  background: rgb(74, 220, 18);
+}

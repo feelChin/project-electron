@@ -1,0 +1,38 @@
+._box_1ctvx_1 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+._box_1ctvx_1 ._wrapper_1ctvx_8 {
+  position: relative;
+  height: 300px;
+  width: 300px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+._box_1ctvx_1 ._wrapper_1ctvx_8 ._virtualLoop_1ctvx_14 {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  color: var(--black);
+}
+._box_1ctvx_1 ._wrapper_1ctvx_8 ._virtualLoop_1ctvx_14 .scrollBar span {
+  transition: 0.4s;
+  background: var(--black);
+}
+._box_1ctvx_1 ._wrapper_1ctvx_8 ._virtualLoop_1ctvx_14 .scrollBar span.drag {
+  background: var(--mainColor);
+}
+._box_1ctvx_1 ._wrapper_1ctvx_8 ._virtualLoop_1ctvx_14 .item {
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  background: var(--white3);
+}
+._box_1ctvx_1 ._wrapper_1ctvx_8 ._virtualLoop_1ctvx_14 .item:nth-child(even) {
+  background: var(--white9);
+}
+._box_1ctvx_1 ._wrapper_1ctvx_8 ._virtualLoop_1ctvx_14 .myScroll {
+  transition: 0s;
+}
